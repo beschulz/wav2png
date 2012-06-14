@@ -15,8 +15,8 @@ The generated images look like the ones you can find on soundcloud.
 They are ment to be used in webpages. They are not anti-aliased, but look really good when scaled down by the browser.
 
 # Examples
-![short](.//examples/short.png)
-![long](.//examples/long.png)
+![short](https://github.com/beschulz/wav2png/raw/master/examples/short.png)
+![long](https://github.com/beschulz/wav2png/raw/master/examples/long.png)
 
 
 # Performance
