@@ -12,31 +12,33 @@
     The generated images look like the ones you can find on soundcloud.
     They are ment to be used in webpages. They are not anti-aliased, but look really good when scaled down by the browser.
 
-# Install
+# Installation
 
-## install dependencies:
-    install dependencies: libsndfile++, libsndfile, libpng
+## install dependencies
+install dependencies: libsndfile++, libsndfile, libpng
 
 on debian, ubuntu:
+
     apt-get install libsndfile1-dev libpng++-dev libpng12-dev
 
-## Build:
+## Build
     make all
 
 # Usage
     wav2png audio_file.wav
-    an png-file called audio_file.wav.png is created.
-      
-    If you find any issues, feel free to contact me.
 
-# TODO:
-    * add command line options for:
-        * width
-        * height
-        * foreground color
-        * background color
-        * output file name
-  
-    * ensure, that unicode paths are working
+an png-file called audio_file.wav.png is created.
+      
+If you find any issues, feel free to contact me.
+
+# TODO
+* add command line options for:
+    * width
+    * height
+    * foreground color
+    * background color
+    * output file name
+
+* ensure, that unicode paths are working
     
 and most important: enjoy and have fun :D
