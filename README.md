@@ -1,16 +1,22 @@
 # wav2png
 
-    Author: Benjamin Schulz
-    email: beschulz[the a with the circle]betabugs.de  
-    license: GPL
+Author: Benjamin Schulz
 
-    create waveform pngs out of audio files.
+email: beschulz[the a with the circle]betabugs.de  
 
-    all audio formats, that are readable by libsndfile are supported.
+License: GPL
+
+create waveform pngs out of audio files.
+
+all audio formats, that are readable by libsndfile are supported.
 
 
-    The generated images look like the ones you can find on soundcloud.
-    They are ment to be used in webpages. They are not anti-aliased, but look really good when scaled down by the browser.
+The generated images look like the ones you can find on soundcloud.
+They are ment to be used in webpages. They are not anti-aliased, but look really good when scaled down by the browser.
+
+# Performance
+On a 2.4 Ghz i5, the conversion rate was about 15 Minutes of audio per second and core. Your Milage may vary.
+If you have suggestions for performance improvements, please drop a line.
 
 # Installation
 
