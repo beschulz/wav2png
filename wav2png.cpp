@@ -65,11 +65,10 @@ int main(int argc, char** argv)
       cerr << "Error opening audio file '" << audio_file_name << "'" << endl;
       return 2;
   }
-            
-  
-  int frames_per_pixel  = wav.frames() / w;
-  int samples_per_pixel = wav.channels() * frames_per_pixel;
 
+  int frames_per_pixel  = std::max<int>(1, wav.frames() / w);
+  int samples_per_pixel = wav.channels() * frames_per_pixel;
+  
   std::vector<float> block(samples_per_pixel);
 
   png::image< png::rgba_pixel > image(w,h);
