@@ -18,8 +18,9 @@ They are ment to be used in webpages. They are not anti-aliased, but look really
 ![short](https://github.com/beschulz/wav2png/raw/master/examples/short.png)
 ![long](https://github.com/beschulz/wav2png/raw/master/examples/long.png)
 
-Note, that you can easily adjust the color of the waveform by changing the background behind it, the waveform itself is transparen.
-Also gradient overlays do look nice. 
+Note, that you can easily adjust the color of the waveform by changing the background behind it - the waveform itself is transparent.
+
+Also gradient overlays look nice.
 
 # Performance
 On a 2.4 Ghz i5, the conversion rate was about 15 Minutes of audio per second and core. Your Milage may vary.
