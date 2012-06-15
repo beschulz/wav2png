@@ -18,7 +18,7 @@ They are ment to be used in webpages. They are not anti-aliased, but look really
 You can supply a foreground and background color in rgba
 
 	./wav2png --foreground-color=ffb400aa --background-color=2e4562ff -o ./examples/example0.png music.wav
-![example0](http://goo.gl/DNSQf)
+![example0](http://goo.gl/DNSQf#1.png)
 
 Transparency works nicely with html.
 
