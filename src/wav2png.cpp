@@ -1,51 +1,22 @@
-/*
-  wav2png
-  
-  converts audiofiles that are readable via libsndfile into pngs containing their waveforms.
-  usage: wav2png audio_file.wav
-  
-  build: make all
-
-  dependencies: libsndfile++, libsndfile, libpng
-  
-  on debian, ubuntu: apt-get install libsndfile1-dev libpng++-dev libpng12-dev
-
-  Author: Benjamin Schulz
-  email: beschulz[the a with the circle]betabugs.de
-  license: GPL
-  
-  If you find any issues, feel free to contact me.
-  
-  TODO:
-    - add command line options for:
-      - width
-      - height
-      - foreground color
-      - background color
-      - output file name
-      
-    - ensure, that unicode paths are working
-
-  and most important: enjoy and have fun :D
-*/
-
+#include <math.h>
+#include <iostream>
+#include <assert.h>
 #include <sndfile.hh>
 #include <png++/png.hpp>
 
-#include <iostream>
-#include <vector>
-#include <iterator>
-
-#include "options.hpp"
-
+/*
+  clamp x into range [min...max]
+*/
 template <typename T>
 const T& clamp(const T& x, const T& min, const T& max)
 {
   return std::max(min, std::min(max, x));
 }
 
-template <typename T> struct sample_scale
-{};
+/*
+  metaprogramming functions to get value range of sample format T.
+*/
+template <typename T> struct sample_scale {};
 
 template <> struct sample_scale<short>
 {
@@ -58,14 +29,46 @@ template <> struct sample_scale<float>
 };
 
 /*
+  conversion from and to dB
+*/
+float float2db(float x)
+{
+  x = fabs(x);
+
+  if (x > 0.0f)
+    return 20.0f * log10( x );
+  else
+    return -9999.9f;
+}
+
+float db2float(float x)
+{
+  return pow(10.0, x/20.f);
+}
+
+/*
+  map value x in range [in_min...in_max] into range [out_min...out_max]
+*/
+float map2range(float x, float in_min, float in_max, float out_min, float out_max)
+{
+  return clamp<float>(
+    out_min + (out_max-out_min)*(x-in_min)/(in_max-in_min),
+    out_min,
+    out_max
+  );
+}
+
+/*
   compute the waveform of the supplied audio-file and store it into out_image.
 */
 void compute_waveform(
   const SndfileHandle& wav,
-  png::image< png::rgba_pixel >&
-  out_image,
+  png::image< png::rgba_pixel >& out_image,
   const png::rgba_pixel& bg_color,
-  const png::rgba_pixel& fg_color
+  const png::rgba_pixel& fg_color,
+  bool use_db_scale,
+  float db_min,
+  float db_max
 )
 {
   using std::size_t;
@@ -78,7 +81,6 @@ void compute_waveform(
   typedef short sample_type;
 
   //there might not be enough samples, in this case, we're using a smaller image and scale it up later.
-  //std::cerr << wav.frames() << std::endl;
   png::image< png::rgba_pixel > small_image;
   bool not_enough_samples = wav.frames() < (sf_count_t)out_image.get_width();
 
@@ -89,8 +91,6 @@ void compute_waveform(
 
   assert(image.get_width() > 0);
 
-  //std::cout << (&image==&out_image) << " " << (&image==&small_image) << std::endl;
-
   int frames_per_pixel  = std::max<int>(1, wav.frames() / image.get_width());
   int samples_per_pixel = wav.channels() * frames_per_pixel;
   std::size_t progress_divisor = std::max<std::size_t>(1, image.get_width()/100);
@@ -98,7 +98,8 @@ void compute_waveform(
   // temp buffer for samples from audio file
   std::vector<sample_type> block(samples_per_pixel);
 
-  /* the processing works like this:
+  /*
+    the processing works like this:
     for each vertical pixel in the image (x), read frames_per_pixel frames from
     the audio file and find the min and max values.
   */
@@ -111,19 +112,22 @@ void compute_waveform(
     // find min and max
     sample_type min(0);
     sample_type max(0);
-    for (int i=0; i<n; i+=wav.channels()) // only left channel
+    for (int i=0; i<n; i+=1)//wav.channels()) // only left channel
     {
       min = std::min( min, block[i] );
       max = std::max( max, block[i] );
     }
 
     // compute "span" from top of image to min
-    // this line is a little tricky because of unsignedness
-    size_t y1 = clamp<size_t>((h-(-min*h/sample_scale<sample_type>::value))/2, 0, h);
+    size_t y1 = use_db_scale?
+      h/2 - map2range( float2db(min / (float)sample_scale<sample_type>::value ), db_min, db_max, 0, h/2):
+      map2range( min, -sample_scale<sample_type>::value, 0, 0, h/2);
     assert(0 <= y1 && y1 <= h/2);
 
     // compute "span" from max to bottom of image
-    size_t y2 = clamp<size_t>((h+max*h/sample_scale<sample_type>::value)/2, 0, h);
+    size_t y2 = use_db_scale?
+      h/2 + map2range( float2db(max / (float)sample_scale<sample_type>::value ), db_min, db_max, 0, h/2):
+      map2range( max, 0, sample_scale<sample_type>::value, h/2, h);
     assert(h/2 <= y2 && y2 <= h);
     
     // fill span top to min
@@ -147,7 +151,7 @@ void compute_waveform(
   
   cerr << "\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\bconverting: 100%" << endl;
 
-  // upscale the generated image
+  // upscale the generated image (nearest neighbour)
   if (not_enough_samples)
   {
     for (std::size_t y=0; y<out_image.get_height(); ++y)
@@ -158,38 +162,4 @@ void compute_waveform(
         out_image[y][x] = small_image[y][xx];
       }
   }
-}
-
-
-int main(int argc, char* argv[])
-{
-  Options options(argc, argv);
-
-  using std::endl;
-  using std::cout;
-  using std::cerr;
-
-  // open sound file
-  SndfileHandle wav(options.input_file_name);
-
-  // handle error
-  if ( wav.error() )
-  {
-      cerr << "Error opening audio file '" << options.input_file_name << "'" << endl;
-      cerr << "Error was: '" << wav.strError() << "'" << endl; 
-      return 2;
-  }
-
-  //cerr << "length: " << wav.frames() / wav.samplerate() << " seconds" << endl;
-
-  // create image
-  png::image< png::rgba_pixel > image(options.width, options.height);
-
-  //png::rgba_pixel bg_color(0xef, 0xef, 0xef, 255);
-  compute_waveform(wav, image, options.background_color, options.foreground_color);
-
-  // write image to disk
-  image.write(options.output_file_name);
-
-  return 0;
 }

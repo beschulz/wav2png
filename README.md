@@ -14,20 +14,40 @@ The generated images look like the ones you can find on soundcloud.
 They are ment to be used in webpages. They are not anti-aliased, but look really good when scaled down by the browser.
 
 # Examples
+
+You can supply a foreground and background color in rgba
+	./wav2png --foreground-color=ffb400aa --background-color=2e4562ff -o ./examples/example0.png music.wav
+![example0](https://github.com/beschulz/wav2png/raw/master/examples/example0.png)
+
+Transparency works nicely in html.
 	./wav2png --foreground-color=ffb400aa --background-color=2e4562ff -o ./examples/example1.png baked.wav
 ![example1](https://github.com/beschulz/wav2png/raw/master/examples/example1.png)
 
+You can make the waveform fully transparent and stick another image in the background. 
+Hint: try a gradient here.
 	./wav2png --foreground-color=00000000 --background-color=2e4562ff -o ./examples/example2.png baked.wav
 ![example2](https://github.com/beschulz/wav2png/raw/master/examples/example2.png)
 
+Or you can just use the foreground and make the background transparent
 	./wav2png --foreground-color=2e4562ff --background-color=00000000 -o ./examples/example3.png baked.wav
 ![example3](https://github.com/beschulz/wav2png/raw/master/examples/example3.png)
 
+wav2png also works nicely with short samples…
 	./wav2png --foreground-color=2e4562ff --background-color=00000000 -o ./examples/example4.png short.wav
 ![example4](https://github.com/beschulz/wav2png/raw/master/examples/example4.png)
 
+…or with very short samples. In this case, the audio file had only 12 samples
 	./wav2png --foreground-color=2e4562ff --background-color=00000000 -o ./examples/example5.png sine.wav
 ![example5](https://github.com/beschulz/wav2png/raw/master/examples/example5.png)
+
+You can also use decibels as units:
+	./wav2png --foreground-color=ffb400aa --background-color=2e4562ff -d -o ./examples/example7.png music.wav
+![example7](https://github.com/beschulz/wav2png/raw/master/examples/example7.png)
+
+And you can supply min and max values when using the db scale to better visualize you content.
+	./wav2png --foreground-color=ffb400aa --background-color=2e4562ff -d --db-min -40 --db-max 3 -o ./examples/example8.png music.wav
+![example8](https://github.com/beschulz/wav2png/raw/master/examples/example8.png)
+
 
 Note, that you can easily adjust the color of the waveform by changing the background behind it.
 But you can also specify colors via --foreground-color and --background-color
@@ -78,6 +98,9 @@ on debian, ubuntu:
 	                                        of inputfile>.png
 	  -c [ --config-file ] arg (=wav2png.cfg)
 	                                        config file to use
+
+# TODO
+	* add channel interpolation. Currently the max of all channels is used. for stereo signals, it would be cool to be able use the Mid, Side, Left or Right channel.
 
 # Donations
 If you find wav2png incredibly usefull nd use it a lot, feel free to make a small [donation via paypal](http://goo.gl/Ey2Bp).

@@ -29,9 +29,9 @@ all: $(BINARY)
 	echo "} /* anonymous namespace */" >> ./src/version.hpp
 	echo "#endif /* VERSION_HPP__ */" >> ./src/version.hpp
 
-$(BINARY): Makefile ./src/wav2png.cpp ./src/options.hpp ./src/version.hpp
+$(BINARY): Makefile ./src/*.cpp ./src/*.hpp
 	mkdir -p `dirname $(BINARY)`
-	g++ -O3 -Wall -Werror $(INCLUDES) $(LD_PLATFORM_FLAGS) ./src/wav2png.cpp -o $(BINARY)
+	g++ -O3 -Wall -Werror $(INCLUDES) $(LD_PLATFORM_FLAGS) ./src/*.cpp -o $(BINARY)
 
 clean:
 	rm -f $(BINARY)
@@ -44,6 +44,6 @@ profile:
 	gprof $(BINARY)_profile|less
 
 examples/example1.png: $(BINARY) README.md
-	cat README.md|grep wav2png|grep examples/|grep -v github|while read line; do time -v ./bin/$$line; done
+	cat README.md|grep wav2png|grep examples/|grep -v github|while read line; do ./bin/$(UNAME)/$$line; done
 
 examples: examples/example1.png

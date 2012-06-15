@@ -32,6 +32,13 @@ struct Options
           		"name of output file, defaults to <name of inputfile>.png")
     		("config-file,c", po::value<std::string>(&config_file_name)->default_value("wav2png.cfg"), 
           		"config file to use")
+    		("db-scale,d", po::value(&use_db_scale)->zero_tokens(),
+    			"use logarithmic (e.g. decibel) scale instead of linear scale")
+    		("db-min", po::value(&db_min)->default_value(-48.0f),
+    			"minimum value of the signal in dB, that will be visible in the waveform")
+		    ("db-max", po::value(&db_max)->default_value(0.0f),
+    			"maximum value of the signal in dB, that will be visible in the waveform. "
+    			"Usefull, if you now, that your signal peaks at a certain level.")
     	;
 
     	po::options_description hidden("Hidden options");
@@ -186,6 +193,10 @@ struct Options
 	std::string output_file_name;
 	std::string input_file_name;
 	std::string config_file_name;
+
+	bool use_db_scale;
+	float db_min;
+	float db_max;
 };
 
 #endif /* OPTIONS_HPP__ */
