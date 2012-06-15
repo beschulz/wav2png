@@ -95,7 +95,7 @@ on debian, ubuntu:
 # Usage
     > wav2png --help
 
-	wav2png version 0.3
+	wav2png version 0.6
 	written by Benjamin Schulz (beschulz[the a with the circle]betabugs.de)
 
 	usage: wav2png [options] input_file_name
@@ -118,6 +118,14 @@ on debian, ubuntu:
 	                                        of inputfile>.png
 	  -c [ --config-file ] arg (=wav2png.cfg)
 	                                        config file to use
+	  -d [ --db-scale ]                     use logarithmic (e.g. decibel) scale 
+	                                        instead of linear scale
+	  --db-min arg (=-48)                   minimum value of the signal in dB, that
+	                                        will be visible in the waveform
+	  --db-max arg (=0)                     maximum value of the signal in dB, that
+	                                        will be visible in the waveform. 
+	                                        Usefull, if you now, that your signal 
+	                                        peaks at a certain level.
 
 # TODO
 
