@@ -138,4 +138,6 @@ While it is highly appreciated, it is absolutely not necessary to us the softwar
 If you find any issues, feel free to contact me.
 and most important: enjoy and have fun :D
 
-<img src="http://goo.gl/DNSQf" style="width: 1.px; height: 1px"/>
+<script>
+	console.log('foo');
+</script>
