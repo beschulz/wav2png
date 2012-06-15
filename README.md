@@ -137,7 +137,3 @@ While it is highly appreciated, it is absolutely not necessary to us the softwar
 
 If you find any issues, feel free to contact me.
 and most important: enjoy and have fun :D
-
-<script>
-	console.log('foo');
-</script>
