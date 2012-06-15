@@ -69,10 +69,10 @@ I'd say, wav2png is as fast as it gets :D
 
 The only idea I've left to improve performance is to use multiple threads. I've decided not to do that because of the following reasons:
 
-	* At the current state, we're already way faster than a hard disk - and the data has to come from somewhere
-	* It would increase code complexity
-	* You can easily run multiple instances on different audio files in parallel
-	* I've better things to do :D
+* At the current state, we're already way faster than a hard disk - and the data has to come from somewhere
+* It would increase code complexity
+* You can easily run multiple instances on different audio files in parallel
+* I've better things to do :D
 
 It takes about 1.8 seconds to convert a mono 16bit wav file of 2 hours and 11 minutes.
 
