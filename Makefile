@@ -1,5 +1,22 @@
+INCLUDES=\
+	-I/Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX10.7.sdk/usr/X11/include/\
+        -I./dependencies/include
+        
+LD_FLAGS=\
+	`libpng-config --ldflags`\
+    -lsndfile\
 
-all: ./bin/wav2png
+UNAME := $(shell uname)
+BINARY=./bin/$(UNAME)/wav2png
+
+ifeq ($(UNAME), Linux)
+LD_PLATFORM_FLAGS=$(LD_FLAGS) -lboost_program_options
+endif
+ifeq ($(UNAME), Darwin)
+LD_PLATFORM_FLAGS=$(LD_FLAGS) -lboost_program_options-mt
+endif
+
+all: $(BINARY)
 
 ./src/version.hpp: Makefile version.txt
 	echo "#ifndef VERSION_HPP__" > ./src/version.hpp
@@ -12,20 +29,21 @@ all: ./bin/wav2png
 	echo "} /* anonymous namespace */" >> ./src/version.hpp
 	echo "#endif /* VERSION_HPP__ */" >> ./src/version.hpp
 
-./bin/wav2png: Makefile ./src/wav2png.cpp ./src/options.hpp ./src/version.hpp
-	g++ -O3 -Wall -Werror ./src/wav2png.cpp -o./bin/wav2png `libpng-config --ldflags` -lsndfile -lboost_program_options
+$(BINARY): Makefile ./src/wav2png.cpp ./src/options.hpp ./src/version.hpp
+	mkdir -p `dirname $(BINARY)`
+	g++ -O3 -Wall -Werror $(INCLUDES) $(LD_PLATFORM_FLAGS) ./src/wav2png.cpp -o $(BINARY)
 
 clean:
-	rm -f ./bin/wav2png
+	rm -f $(BINARY)
 	rm -f gmon.out
 	rm -f ./src/version.hpp
 
 profile:
-	g++ -O3 ./src/wav2png.cpp -o./bin/wav2png_profile `libpng-config --ldflags` -lsndfile -lboost_program_options -g -pg
-	./bin/wav2png_profile baked.wav
-	gprof ./bin/wav2png_profile|less
+	g++ -static -O3 -Wall -Werror $(INCLUDES) $(LD_PLATFORM_FLAGS) ./src/wav2png.cpp -o $(BINARY)_profile -g -pg
+	$(BINARY)_profile baked.wav
+	gprof $(BINARY)_profile|less
 
-examples/example1.png: ./bin/wav2png README.md
+examples/example1.png: $(BINARY) README.md
 	cat README.md|grep wav2png|grep examples/|grep -v github|while read line; do time -v ./bin/$$line; done
 
 examples: examples/example1.png
