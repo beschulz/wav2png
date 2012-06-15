@@ -75,6 +75,10 @@ on debian, ubuntu:
 	                                        of inputfile>.png
 	  -c [ --config-file ] arg (=wav2png.cfg)
 	                                        config file to use
-      
+
+# Donations
+If you find wav2png incredibly usefull nd use it a lot, feel free to make a small [donation via paypal](http://goo.gl/Ey2Bp).
+While it is highly appreciated, it is absolutely not necessary to us the software.
+
 If you find any issues, feel free to contact me.
 and most important: enjoy and have fun :D
