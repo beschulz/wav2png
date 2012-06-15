@@ -36,6 +36,8 @@
 #include <vector>
 #include <iterator>
 
+#include "options.hpp"
+
 template <typename T>
 const T& clamp(const T& x, const T& min, const T& max)
 {
@@ -55,57 +57,32 @@ template <> struct sample_scale<float>
   static const float value = 1.0f;
 };
 
-int main(int argc, char** argv)
+void compute_waveform(const SndfileHandle& wav, png::image< png::rgba_pixel >& image, const png::rgba_pixel& bg_color)
 {
-  using std::endl;
-  using std::cout;
+  using std::size_t;
   using std::cerr;
-
-  if (argc==1)
-  {
-    cout << "usage: " << argv[0] << " audio_file" << endl;
-    return 1;
-  }
-  
-  std::string audio_file_name(argv[1]);
-  
-  int w=1800;
-  int h=280;
-
-  // open sound file
-  SndfileHandle wav(audio_file_name);
-
-  // handle error
-  if ( wav.error() )
-  {
-      cerr << "Error opening audio file '" << audio_file_name << "'" << endl;
-      cerr << "Error was: '" << wav.strError() << "'" << endl; 
-      return 2;
-  }
-
-  cerr << "length: " << wav.frames() / wav.samplerate() << " seconds" << endl;
-
-  int frames_per_pixel  = std::max<int>(1, wav.frames() / w);
-  int samples_per_pixel = wav.channels() * frames_per_pixel;
+  using std::endl;
 
   // you can change it to float or short, short was much faster for me.
   typedef short sample_type;
 
-  // buffer for samples from audio file
+  const size_t w = image.get_width();
+  const size_t h = image.get_height();
+
+  int frames_per_pixel  = std::max<int>(1, wav.frames() / w);
+  int samples_per_pixel = wav.channels() * frames_per_pixel;
+
+  // temp buffer for samples from audio file
   std::vector<sample_type> block(samples_per_pixel);
 
-  // create image
-  png::image< png::rgba_pixel > image(w,h);
-  png::rgba_pixel color(0xef, 0xef, 0xef, 255);
-  
   /* the processing works like this:
     for each vertical pixel in the image (x), read frames_per_pixel frames from
     the audio file and find the min and max values.
   */
-  for (int x = 0; x < w; ++x)
+  for (size_t x = 0; x < w; ++x)
   {
     // read frames
-    sf_count_t n = wav.readf(&block[0], frames_per_pixel) * wav.channels();
+    sf_count_t n = const_cast<SndfileHandle&>(wav).readf(&block[0], frames_per_pixel) * wav.channels();
     assert(n <= (sf_count_t)block.size());
 
     // find min and max
@@ -118,20 +95,21 @@ int main(int argc, char** argv)
     }
 
     // compute "span" from top of image to min
-    int y1 = clamp<int>((h+min*h/sample_scale<sample_type>::value)/2, 0, h);
+    // this line is a little tricky because of unsignedness
+    size_t y1 = clamp<size_t>((h-(-min*h/sample_scale<sample_type>::value))/2, 0, h);
     assert(0 <= y1 && y1 <= h/2);
 
     // compute "span" from max to bottom of image
-    int y2 = clamp<int>((h+max*h/sample_scale<sample_type>::value)/2, 0, h);
+    size_t y2 = clamp<size_t>((h+max*h/sample_scale<sample_type>::value)/2, 0, h);
     assert(h/2 <= y2 && y2 <= h);
     
     // fill span top to min
-    for(int y=0; y<y1;++y)
-      image.set_pixel(x, y, color);
+    for(size_t y=0; y<y1;++y)
+      image.set_pixel(x, y, bg_color);
 
     // fill span max to bottom
-    for(int y = y2; y<h; ++y)
-      image.set_pixel(x, y, color);
+    for(size_t y = y2; y<h; ++y)
+      image.set_pixel(x, y, bg_color);
     
     // print progress
     if ( x%(w/100) == 0 )
@@ -141,9 +119,46 @@ int main(int argc, char** argv)
   }
   
   cerr << "\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\bconverting: 100%" << endl;
+}
+
+
+int main(int argc, char* argv[])
+{
+  Options options(argc, argv);
+
+  using std::endl;
+  using std::cout;
+  using std::cerr;
+
+  // open sound file
+  SndfileHandle wav(options.input_file_name);
+
+  // handle error
+  if ( wav.error() )
+  {
+      cerr << "Error opening audio file '" << options.input_file_name << "'" << endl;
+      cerr << "Error was: '" << wav.strError() << "'" << endl; 
+      return 2;
+  }
+
+  //cerr << "length: " << wav.frames() / wav.samplerate() << " seconds" << endl;
+
+  // create image
+  png::image< png::rgba_pixel > image(options.width, options.height);
+
+  for(std::size_t y=0; y<image.get_height(); ++y )
+  {
+    for(std::size_t x=0; x<image.get_width(); ++x )
+    {
+      image[y][x] = options.foreground_color;
+    }
+  }
+
+  //png::rgba_pixel bg_color(0xef, 0xef, 0xef, 255);
+  compute_waveform(wav, image, options.background_color);
 
   // write image to disk
-  image.write(audio_file_name + ".png");
+  image.write(options.output_file_name);
 
   #ifdef __linux__
   // this prints info about memory usage, in my tests it was: VmRSS: 4320 kB

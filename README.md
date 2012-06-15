@@ -15,8 +15,17 @@ The generated images look like the ones you can find on soundcloud.
 They are ment to be used in webpages. They are not anti-aliased, but look really good when scaled down by the browser.
 
 # Examples
-![short](https://github.com/beschulz/wav2png/raw/master/examples/short.png)
-![long](https://github.com/beschulz/wav2png/raw/master/examples/long.png)
+	./wav2png --foreground-color=ffb400aa --background-color=2e4562ff -o ./examples/example1.png baked.wav
+	![example1](https://github.com/beschulz/wav2png/raw/master/examples/example1.png)
+
+	./wav2png --foreground-color=00000000 --background-color=2e4562ff -o ./examples/example2.png baked.wav
+	![example2](https://github.com/beschulz/wav2png/raw/master/examples/example2.png)
+
+	./wav2png --foreground-color=2e4562ff --background-color=00000000 -o ./examples/example3.png baked.wav
+	![example3](https://github.com/beschulz/wav2png/raw/master/examples/example3.png)
+
+	./wav2png --foreground-color=2e4562ff --background-color=00000000 -o ./examples/example4.png short.wav
+	![example4](https://github.com/beschulz/wav2png/raw/master/examples/example4.png)
 
 Note, that you can easily adjust the color of the waveform by changing the background behind it - the waveform itself is transparent.
 
@@ -31,19 +40,41 @@ If you have suggestions for performance improvements, please drop a line.
 # Installation
 
 ## install dependencies
-install dependencies: libsndfile++, libsndfile, libpng
+install dependencies: libsndfile++, libsndfile, libpng, libboost-program-options
 
 on debian, ubuntu:
 
-    apt-get install libsndfile1-dev libpng++-dev libpng12-dev
+    apt-get install libsndfile1-dev libpng++-dev libpng12-dev libboost-program-options-dev
 
 ## Build
     make all
 
 # Usage
-    wav2png audio_file.wav
+    > wav2png --help
 
-an png-file called audio_file.wav.png is created.
+	wav2png version 0.3
+	written by Benjamin Schulz (beschulz[the a with the circle]betabugs.de)
+
+	usage: wav2png [options] input_file_name
+	example: wav2png my_file.wav
+
+	Allowed options:
+
+	Generic options:
+	  -v [ --version ]      print version string
+	  --help                produce help message
+
+	Configuration:
+	  -w [ --width ] arg (=1800)            width of generated image
+	  -h [ --height ] arg (=280)            height of generated image
+	  -b [ --background-color ] arg (=efefefff)
+	                                        color of background in hex rgba
+	  -f [ --foreground-color ] arg (=00000000)
+	                                        color of background in hex rgba
+	  -o [ --output ] arg                   name of output file, defaults to <name 
+	                                        of inputfile>.png
+	  -c [ --config-file ] arg (=wav2png.cfg)
+	                                        config file to use
       
 If you find any issues, feel free to contact me.
 
