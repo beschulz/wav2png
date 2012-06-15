@@ -30,3 +30,6 @@ profile:
 	g++ -O3 wav2png.cpp -owav2png `libpng-config --ldflags` -lsndfile -g -pg
 	./wav2png baked.wav
 	gprof ./wav2png|less
+
+examples: wav2png README.md
+	cat README.md|grep wav2png|grep examples/|grep -v github|while read line; do $$line; done
