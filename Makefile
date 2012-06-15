@@ -1,35 +1,31 @@
 
-version.hpp: Makefile version.txt
-	echo "#ifndef VERSION_HPP__" > version.hpp
-	echo "#define VERSION_HPP__" >> version.hpp
-	echo "namespace {" >> version.hpp
-	echo "	namespace version {" >> version.hpp
-	echo "		static const std::string date=\"`date`\";" >> version.hpp
-	echo "		static const std::string version=\"`cat version.txt`\";" >> version.hpp
-	echo "	}; /* namespace version */" >> version.hpp
-	echo "} /* anonymous namespace */" >> version.hpp
-	echo "#endif /* VERSION_HPP__ */" >> version.hpp
+./src/version.hpp: Makefile version.txt
+	echo "#ifndef VERSION_HPP__" > ./src/version.hpp
+	echo "#define VERSION_HPP__" >> ./src/version.hpp
+	echo "namespace {" >> ./src/version.hpp
+	echo "	namespace version {" >> ./src/version.hpp
+	echo "		static const std::string date=\"`date`\";" >> ./src/version.hpp
+	echo "		static const std::string version=\"`cat version.txt`\";" >> ./src/version.hpp
+	echo "	}; /* namespace version */" >> ./src/version.hpp
+	echo "} /* anonymous namespace */" >> ./src/version.hpp
+	echo "#endif /* VERSION_HPP__ */" >> ./src/version.hpp
 
-wav2png: Makefile wav2png.cpp options.hpp version.hpp
-	g++ -O3 -Wall -Werror wav2png.cpp -owav2png `libpng-config --ldflags` -lsndfile -lboost_program_options
+./bin/wav2png: Makefile ./src/wav2png.cpp ./src/options.hpp ./src/version.hpp
+	g++ -O3 -Wall -Werror ./src/wav2png.cpp -o./bin/wav2png `libpng-config --ldflags` -lsndfile -lboost_program_options
 
-all: wav2png
+all: ./bin/wav2png
 
 clean:
-	rm -f wav2png
+	rm -f ./bin/wav2png
 	rm -f gmon.out
-	rm -f version.hpp
-
-test: wav2png
-	time -v ./wav2png \
-		--foreground-color=ffb40044 \
-		--background-color=143c57ff \
-		/media/psf/Home/Downloads/Nexidia\ Workbench\ SDK/Test/baked.wav
+	rm -f ./src/version.hpp
 
 profile:
-	g++ -O3 wav2png.cpp -owav2png `libpng-config --ldflags` -lsndfile -g -pg
-	./wav2png baked.wav
-	gprof ./wav2png|less
+	g++ -O3 ./src/wav2png.cpp -o./bin/wav2png_profile `libpng-config --ldflags` -lsndfile -lboost_program_options -g -pg
+	./bin/wav2png_profile baked.wav
+	gprof ./bin/wav2png_profile|less
 
-examples: wav2png README.md
-	cat README.md|grep wav2png|grep examples/|grep -v github|while read line; do $$line; done
+examples/example1.png: ./bin/wav2png README.md
+	cat README.md|grep wav2png|grep examples/|grep -v github|while read line; do ./bin/$$line; done
+
+examples: examples/example1.png

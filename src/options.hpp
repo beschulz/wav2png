@@ -4,7 +4,7 @@
 #include <boost/program_options.hpp>
 #include <string>
 #include <png++/png.hpp>
-#include "version.hpp"
+#include "./version.hpp"
 
 struct Options
 {
