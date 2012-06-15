@@ -16,27 +16,33 @@ They are ment to be used in webpages. They are not anti-aliased, but look really
 # Examples
 
 You can supply a foreground and background color in rgba
+
 	./wav2png --foreground-color=ffb400aa --background-color=2e4562ff -o ./examples/example0.png music.wav
 ![example0](https://github.com/beschulz/wav2png/raw/master/examples/example0.png)
 
 Transparency works nicely in html.
+
 	./wav2png --foreground-color=ffb400aa --background-color=2e4562ff -o ./examples/example1.png baked.wav
 ![example1](https://github.com/beschulz/wav2png/raw/master/examples/example1.png)
 
 You can make the waveform fully transparent and stick another image in the background. 
 Hint: try a gradient here.
+
 	./wav2png --foreground-color=00000000 --background-color=2e4562ff -o ./examples/example2.png baked.wav
 ![example2](https://github.com/beschulz/wav2png/raw/master/examples/example2.png)
 
 Or you can just use the foreground and make the background transparent
+
 	./wav2png --foreground-color=2e4562ff --background-color=00000000 -o ./examples/example3.png baked.wav
 ![example3](https://github.com/beschulz/wav2png/raw/master/examples/example3.png)
 
 wav2png also works nicely with short samples…
+
 	./wav2png --foreground-color=2e4562ff --background-color=00000000 -o ./examples/example4.png short.wav
 ![example4](https://github.com/beschulz/wav2png/raw/master/examples/example4.png)
 
 …or with very short samples. In this case, the audio file had only 12 samples
+
 	./wav2png --foreground-color=2e4562ff --background-color=00000000 -o ./examples/example5.png sine.wav
 ![example5](https://github.com/beschulz/wav2png/raw/master/examples/example5.png)
 
