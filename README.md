@@ -20,7 +20,7 @@ You can supply a foreground and background color in rgba
 	./wav2png --foreground-color=ffb400aa --background-color=2e4562ff -o ./examples/example0.png music.wav
 ![example0](https://github.com/beschulz/wav2png/raw/master/examples/example0.png)
 
-Transparency works nicely in html.
+Transparency works nicely with html.
 
 	./wav2png --foreground-color=ffb400aa --background-color=2e4562ff -o ./examples/example1.png baked.wav
 ![example1](https://github.com/beschulz/wav2png/raw/master/examples/example1.png)
@@ -31,7 +31,7 @@ Hint: try a gradient here.
 	./wav2png --foreground-color=00000000 --background-color=2e4562ff -o ./examples/example2.png baked.wav
 ![example2](https://github.com/beschulz/wav2png/raw/master/examples/example2.png)
 
-Or you can just use the foreground and make the background transparent
+Or you can just use the foreground color and make the background transparent
 
 	./wav2png --foreground-color=2e4562ff --background-color=00000000 -o ./examples/example3.png baked.wav
 ![example3](https://github.com/beschulz/wav2png/raw/master/examples/example3.png)
@@ -41,27 +41,40 @@ wav2png also works nicely with short samples…
 	./wav2png --foreground-color=2e4562ff --background-color=00000000 -o ./examples/example4.png short.wav
 ![example4](https://github.com/beschulz/wav2png/raw/master/examples/example4.png)
 
-…or with very short samples. In this case, the audio file had only 12 samples
+…and with very short samples. In this case, the audio file had only 12 samples
 
 	./wav2png --foreground-color=2e4562ff --background-color=00000000 -o ./examples/example5.png sine.wav
 ![example5](https://github.com/beschulz/wav2png/raw/master/examples/example5.png)
 
-You can also use decibels as units:
+You can also use decibels as units.
+
 	./wav2png --foreground-color=ffb400aa --background-color=2e4562ff -d -o ./examples/example7.png music.wav
 ![example7](https://github.com/beschulz/wav2png/raw/master/examples/example7.png)
 
 And you can supply min and max values when using the db scale to better visualize you content.
+
 	./wav2png --foreground-color=ffb400aa --background-color=2e4562ff -d --db-min -40 --db-max 3 -o ./examples/example8.png music.wav
 ![example8](https://github.com/beschulz/wav2png/raw/master/examples/example8.png)
 
 
 Note, that you can easily adjust the color of the waveform by changing the background behind it.
-But you can also specify colors via --foreground-color and --background-color
+But you can also specify colors via --foreground-color and --background-color.
 
-Also gradient overlays look nice.
+Also gradient overlays and backgrounds look nice.
 
 # Performance
-It took about 1.8 seconds to convert a mono 16bit wav file of 2 hours and 11 minutes.
+Performance was one of the main goals, because all the other solutions I've tried where incredibly slow.
+
+I'd say, wav2png is as fast as it gets :D
+
+The only idea I've left to improve performance is to use multiple threads. I've decided not to do that because of the following reasons:
+	* At the current state, we're already way faster than a hard disk - and the data has to come from somewhere
+	* It would increase code complexity
+	* You can easily run multiple instances on different audio files in parallel
+	* I've better things to do :D
+
+It takes about 1.8 seconds to convert a mono 16bit wav file of 2 hours and 11 minutes.
+
 Thus on a 2.4 Ghz i5, the conversion rate was about 1 hour and 10 Minutes of audio per second and core (running inside a VM). Your Milage may vary.
 
 If you have suggestions for performance improvements, please drop a line.
