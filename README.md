@@ -10,24 +10,24 @@ create waveform pngs out of audio files.
 
 all audio formats, that are readable by libsndfile are supported.
 
-
 The generated images look like the ones you can find on soundcloud.
 They are ment to be used in webpages. They are not anti-aliased, but look really good when scaled down by the browser.
 
 # Examples
 	./wav2png --foreground-color=ffb400aa --background-color=2e4562ff -o ./examples/example1.png baked.wav
-	![example1](https://github.com/beschulz/wav2png/raw/master/examples/example1.png)
+![example1](https://github.com/beschulz/wav2png/raw/master/examples/example1.png)
 
 	./wav2png --foreground-color=00000000 --background-color=2e4562ff -o ./examples/example2.png baked.wav
-	![example2](https://github.com/beschulz/wav2png/raw/master/examples/example2.png)
+![example2](https://github.com/beschulz/wav2png/raw/master/examples/example2.png)
 
 	./wav2png --foreground-color=2e4562ff --background-color=00000000 -o ./examples/example3.png baked.wav
-	![example3](https://github.com/beschulz/wav2png/raw/master/examples/example3.png)
+![example3](https://github.com/beschulz/wav2png/raw/master/examples/example3.png)
 
 	./wav2png --foreground-color=2e4562ff --background-color=00000000 -o ./examples/example4.png short.wav
-	![example4](https://github.com/beschulz/wav2png/raw/master/examples/example4.png)
+![example4](https://github.com/beschulz/wav2png/raw/master/examples/example4.png)
 
-Note, that you can easily adjust the color of the waveform by changing the background behind it - the waveform itself is transparent.
+Note, that you can easily adjust the color of the waveform by changing the background behind it.
+But you can also specify colors via --foreground-color and --background-color
 
 Also gradient overlays look nice.
 
@@ -77,13 +77,4 @@ on debian, ubuntu:
 	                                        config file to use
       
 If you find any issues, feel free to contact me.
-
-# TODO
-* add command line options for:
-    * width
-    * height
-    * foreground color
-    * background color
-    * output file name
-    
 and most important: enjoy and have fun :D
