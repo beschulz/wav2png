@@ -26,6 +26,6 @@ profile:
 	gprof ./bin/wav2png_profile|less
 
 examples/example1.png: ./bin/wav2png README.md
-	cat README.md|grep wav2png|grep examples/|grep -v github|while read line; do ./bin/$$line; done
+	cat README.md|grep wav2png|grep examples/|grep -v github|while read line; do time -v ./bin/$$line; done
 
 examples: examples/example1.png
