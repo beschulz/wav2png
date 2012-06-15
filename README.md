@@ -120,7 +120,8 @@ on debian, ubuntu:
 	                                        config file to use
 
 # TODO
-	* add channel interpolation. Currently the max of all channels is used. for stereo signals, it would be cool to be able use the Mid, Side, Left or Right channel.
+
+* add channel interpolation. Currently the max of all channels is used. for stereo signals, it would be cool to be able use the Mid, Side, Left or Right channel.
 
 # Donations
 If you find wav2png incredibly usefull nd use it a lot, feel free to make a small [donation via paypal](http://goo.gl/Ey2Bp).
