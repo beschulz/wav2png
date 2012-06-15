@@ -23,7 +23,9 @@ Note, that you can easily adjust the color of the waveform by changing the backg
 Also gradient overlays look nice.
 
 # Performance
-On a 2.4 Ghz i5, the conversion rate was about 15 Minutes of audio per second and core. Your Milage may vary.
+It took about 1.8 seconds to convert a mono 16bit wav file of 2 hours and 11 minutes.
+Thus on a 2.4 Ghz i5, the conversion rate was about 1 hour and 10 Minutes of audio per second and core (running inside a VM). Your Milage may vary.
+
 If you have suggestions for performance improvements, please drop a line.
 
 # Installation
@@ -52,7 +54,5 @@ If you find any issues, feel free to contact me.
     * foreground color
     * background color
     * output file name
-
-* ensure, that unicode paths are working
     
 and most important: enjoy and have fun :D
