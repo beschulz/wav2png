@@ -107,6 +107,18 @@ struct Options
 		if (output_file_name.empty())
 			output_file_name = input_file_name + ".png";
 
+		if (width == 0)
+		{
+			std::cerr << "Error: width cannot be 0." << std::endl;
+			parse_error = true;
+		}
+
+		if (height == 0)
+		{
+			std::cerr << "Error: height cannot be 0." << std::endl;
+			parse_error = true;
+		}
+
 		if (parse_error || vm.count("help") )
 		{
 			std::cout << "wav2png version " << version::version << std::endl;

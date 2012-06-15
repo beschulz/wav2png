@@ -57,20 +57,43 @@ template <> struct sample_scale<float>
   static const float value = 1.0f;
 };
 
-void compute_waveform(const SndfileHandle& wav, png::image< png::rgba_pixel >& image, const png::rgba_pixel& bg_color)
+/*
+  compute the waveform of the supplied audio-file and store it into out_image.
+*/
+void compute_waveform(
+  const SndfileHandle& wav,
+  png::image< png::rgba_pixel >&
+  out_image,
+  const png::rgba_pixel& bg_color,
+  const png::rgba_pixel& fg_color
+)
 {
   using std::size_t;
   using std::cerr;
   using std::endl;
 
+  const unsigned h = out_image.get_height();
+
   // you can change it to float or short, short was much faster for me.
   typedef short sample_type;
 
-  const size_t w = image.get_width();
-  const size_t h = image.get_height();
+  //there might not be enough samples, in this case, we're using a smaller image and scale it up later.
+  //std::cerr << wav.frames() << std::endl;
+  png::image< png::rgba_pixel > small_image;
+  bool not_enough_samples = wav.frames() < (sf_count_t)out_image.get_width();
 
-  int frames_per_pixel  = std::max<int>(1, wav.frames() / w);
+  if (not_enough_samples)
+    small_image = png::image< png::rgba_pixel >( wav.frames()>0?wav.frames():1, out_image.get_height() );
+
+  png::image< png::rgba_pixel >& image = not_enough_samples?small_image:out_image;
+
+  assert(image.get_width() > 0);
+
+  //std::cout << (&image==&out_image) << " " << (&image==&small_image) << std::endl;
+
+  int frames_per_pixel  = std::max<int>(1, wav.frames() / image.get_width());
   int samples_per_pixel = wav.channels() * frames_per_pixel;
+  std::size_t progress_divisor = std::max<std::size_t>(1, image.get_width()/100);
 
   // temp buffer for samples from audio file
   std::vector<sample_type> block(samples_per_pixel);
@@ -79,7 +102,7 @@ void compute_waveform(const SndfileHandle& wav, png::image< png::rgba_pixel >& i
     for each vertical pixel in the image (x), read frames_per_pixel frames from
     the audio file and find the min and max values.
   */
-  for (size_t x = 0; x < w; ++x)
+  for (size_t x = 0; x < image.get_width(); ++x)
   {
     // read frames
     sf_count_t n = const_cast<SndfileHandle&>(wav).readf(&block[0], frames_per_pixel) * wav.channels();
@@ -107,18 +130,34 @@ void compute_waveform(const SndfileHandle& wav, png::image< png::rgba_pixel >& i
     for(size_t y=0; y<y1;++y)
       image.set_pixel(x, y, bg_color);
 
+    // fill span min to max
+    for(size_t y=y1; y<y2;++y)
+      image.set_pixel(x, y, fg_color);
+
     // fill span max to bottom
     for(size_t y = y2; y<h; ++y)
       image.set_pixel(x, y, bg_color);
     
     // print progress
-    if ( x%(w/100) == 0 )
+    if ( x%(progress_divisor) == 0 )
     {
-      cerr << "\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\bconverting: " << 100*x/w << "%";
+      cerr << "\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\bconverting: " << 100*x/image.get_width() << "%";
     }
   }
   
   cerr << "\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\bconverting: 100%" << endl;
+
+  // upscale the generated image
+  if (not_enough_samples)
+  {
+    for (std::size_t y=0; y<out_image.get_height(); ++y)
+      for(std::size_t x=0; x<out_image.get_width(); ++x)
+      {
+        std::size_t xx = x*small_image.get_width()/out_image.get_width();
+        assert( xx < out_image.get_width() );
+        out_image[y][x] = small_image[y][xx];
+      }
+  }
 }
 
 
@@ -146,16 +185,8 @@ int main(int argc, char* argv[])
   // create image
   png::image< png::rgba_pixel > image(options.width, options.height);
 
-  for(std::size_t y=0; y<image.get_height(); ++y )
-  {
-    for(std::size_t x=0; x<image.get_width(); ++x )
-    {
-      image[y][x] = options.foreground_color;
-    }
-  }
-
   //png::rgba_pixel bg_color(0xef, 0xef, 0xef, 255);
-  compute_waveform(wav, image, options.background_color);
+  compute_waveform(wav, image, options.background_color, options.foreground_color);
 
   // write image to disk
   image.write(options.output_file_name);

@@ -1,4 +1,6 @@
 
+all: ./bin/wav2png
+
 ./src/version.hpp: Makefile version.txt
 	echo "#ifndef VERSION_HPP__" > ./src/version.hpp
 	echo "#define VERSION_HPP__" >> ./src/version.hpp
@@ -12,8 +14,6 @@
 
 ./bin/wav2png: Makefile ./src/wav2png.cpp ./src/options.hpp ./src/version.hpp
 	g++ -O3 -Wall -Werror ./src/wav2png.cpp -o./bin/wav2png `libpng-config --ldflags` -lsndfile -lboost_program_options
-
-all: ./bin/wav2png
 
 clean:
 	rm -f ./bin/wav2png

@@ -26,6 +26,9 @@ They are ment to be used in webpages. They are not anti-aliased, but look really
 	./wav2png --foreground-color=2e4562ff --background-color=00000000 -o ./examples/example4.png short.wav
 ![example4](https://github.com/beschulz/wav2png/raw/master/examples/example4.png)
 
+	./wav2png --foreground-color=2e4562ff --background-color=00000000 -o ./examples/example5.png sine.wav
+![example5](https://github.com/beschulz/wav2png/raw/master/examples/example5.png)
+
 Note, that you can easily adjust the color of the waveform by changing the background behind it.
 But you can also specify colors via --foreground-color and --background-color
 
