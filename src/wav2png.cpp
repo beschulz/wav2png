@@ -191,18 +191,5 @@ int main(int argc, char* argv[])
   // write image to disk
   image.write(options.output_file_name);
 
-  #ifdef __linux__
-  // this prints info about memory usage, in my tests it was: VmRSS: 4320 kB
-  /*
-  {
-    std::ifstream proc("/proc/self/status");
-    std::copy(
-      std::istreambuf_iterator<char>(proc),
-      std::istreambuf_iterator<char>(),
-      std::ostream_iterator<char>(std::cerr)
-    );
-  }*/
-  #endif /* __linux__ */
-
   return 0;
 }
