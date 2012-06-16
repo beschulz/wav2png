@@ -32,7 +32,7 @@ struct Options
           		"name of output file, defaults to <name of inputfile>.png")
     		("config-file,c", po::value<std::string>(&config_file_name)->default_value("wav2png.cfg"), 
           		"config file to use")
-    		("db-scale,d", po::value(&use_db_scale)->zero_tokens(),
+    		("db-scale,d", po::value(&use_db_scale)->zero_tokens()->default_value(false),
     			"use logarithmic (e.g. decibel) scale instead of linear scale")
     		("db-min", po::value(&db_min)->default_value(-48.0f),
     			"minimum value of the signal in dB, that will be visible in the waveform")
