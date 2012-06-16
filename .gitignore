@@ -1,12 +1,11 @@
 .DS_Store
 Makefile~
-baked.wav
-short.wav
 version.txt~
 version.hpp
 bin/wav2png_profile
-sine.wav.png
-sine.wav
-short.wav.png
-baked.wav.png
+*.wav
+*.wav.png
 dependencies
+wav2pngDroplet.app
+.gitignore~
+icons/*.png

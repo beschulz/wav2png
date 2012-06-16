@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+	<key>image_width</key>
+	<integer>1800</integer>
+	<key>image_height</key>
+	<string>260</string>
+	<key>autosave</key>
+	<true/>
+	<key>foreground_color</key>
+	<data>BAtzdHJlYW10eXBlZIHoA4QBQISEhAdOU0NvbG9yAISECE5TT2JqZWN0AIWEAWMBhARmZmZmgxZSYj+DVF71PgABhg==</data>
+	<key>background_color</key>
+	<data>BAtzdHJlYW10eXBlZIHoA4QBQISEhAdOU0NvbG9yAISECE5TT2JqZWN0AIWEAWMBhARmZmZmg5/2gj6DaoqvPoOy0AA/AYY=</data>
+	<key>log</key>
+	<false/>
+</dict>
+</plist>

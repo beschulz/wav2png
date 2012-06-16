@@ -1,0 +1,448 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 46;
+	objects = {
+
+/* Begin PBXBuildFile section */
+		9A9F7102158CC3CD00727F23 /* Cocoa.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 9A9F7101158CC3CD00727F23 /* Cocoa.framework */; };
+		9A9F7120158CC8F800727F23 /* icon.icns in Resources */ = {isa = PBXBuildFile; fileRef = 9A9F711F158CC8F700727F23 /* icon.icns */; };
+		9AAF795E158D1A3C00FEC688 /* main.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 9AAF7959158D1A3C00FEC688 /* main.cpp */; };
+		9AAF7960158D1A3C00FEC688 /* wav2png.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 9AAF795C158D1A3C00FEC688 /* wav2png.cpp */; };
+		9AAF7972158D1A4A00FEC688 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 9AAF7965158D1A4A00FEC688 /* AppDelegate.m */; };
+		9AAF7973158D1A4A00FEC688 /* Credits.rtf in Resources */ = {isa = PBXBuildFile; fileRef = 9AAF7966158D1A4A00FEC688 /* Credits.rtf */; };
+		9AAF7974158D1A4A00FEC688 /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = 9AAF7968158D1A4A00FEC688 /* InfoPlist.strings */; };
+		9AAF7975158D1A4A00FEC688 /* MainMenu.xib in Resources */ = {isa = PBXBuildFile; fileRef = 9AAF796A158D1A4A00FEC688 /* MainMenu.xib */; };
+		9AAF7977158D1A4A00FEC688 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 9AAF796C158D1A4A00FEC688 /* main.m */; };
+		9AAF797A158D1A4A00FEC688 /* WaveformDropImageView.mm in Sources */ = {isa = PBXBuildFile; fileRef = 9AAF7970158D1A4A00FEC688 /* WaveformDropImageView.mm */; };
+		9AAF797D158D1CC600FEC688 /* wav2png_objc.mm in Sources */ = {isa = PBXBuildFile; fileRef = 9AAF797C158D1CC600FEC688 /* wav2png_objc.mm */; };
+		9AAF797F158D279C00FEC688 /* Defaults.plist in Resources */ = {isa = PBXBuildFile; fileRef = 9AAF797E158D279C00FEC688 /* Defaults.plist */; };
+		9AAF7982158D3AB800FEC688 /* wav2png in CopyFiles */ = {isa = PBXBuildFile; fileRef = 9AFD2A76158CB47C00625786 /* wav2png */; };
+		9AAF7984158D3BA900FEC688 /* wav2pngDroplet.app in CopyFiles */ = {isa = PBXBuildFile; fileRef = 9A9F70FE158CC3CD00727F23 /* wav2pngDroplet.app */; };
+		9AFD2A8C158CB52400625786 /* libboost_program_options-mt.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = 9AFD2A8B158CB52400625786 /* libboost_program_options-mt.dylib */; };
+/* End PBXBuildFile section */
+
+/* Begin PBXCopyFilesBuildPhase section */
+		9AAF7983158D3BA500FEC688 /* CopyFiles */ = {
+			isa = PBXCopyFilesBuildPhase;
+			buildActionMask = 2147483647;
+			dstPath = "$(SRCROOT)/../../bin/Darwin";
+			dstSubfolderSpec = 0;
+			files = (
+				9AAF7984158D3BA900FEC688 /* wav2pngDroplet.app in CopyFiles */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		9AFD2A74158CB47C00625786 /* CopyFiles */ = {
+			isa = PBXCopyFilesBuildPhase;
+			buildActionMask = 12;
+			dstPath = "$(SRCROOT)/../../bin/Darwin";
+			dstSubfolderSpec = 0;
+			files = (
+				9AAF7982158D3AB800FEC688 /* wav2png in CopyFiles */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXCopyFilesBuildPhase section */
+
+/* Begin PBXFileReference section */
+		9A9F70FE158CC3CD00727F23 /* wav2pngDroplet.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = wav2pngDroplet.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		9A9F7101158CC3CD00727F23 /* Cocoa.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Cocoa.framework; path = System/Library/Frameworks/Cocoa.framework; sourceTree = SDKROOT; };
+		9A9F7104158CC3CD00727F23 /* AppKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AppKit.framework; path = System/Library/Frameworks/AppKit.framework; sourceTree = SDKROOT; };
+		9A9F7105158CC3CD00727F23 /* CoreData.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreData.framework; path = System/Library/Frameworks/CoreData.framework; sourceTree = SDKROOT; };
+		9A9F7106158CC3CD00727F23 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
+		9A9F711F158CC8F700727F23 /* icon.icns */ = {isa = PBXFileReference; lastKnownFileType = image.icns; path = icon.icns; sourceTree = "<group>"; };
+		9AAF7959158D1A3C00FEC688 /* main.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = main.cpp; sourceTree = "<group>"; };
+		9AAF795A158D1A3C00FEC688 /* options.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = options.hpp; sourceTree = "<group>"; };
+		9AAF795B158D1A3C00FEC688 /* version.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = version.hpp; sourceTree = "<group>"; };
+		9AAF795C158D1A3C00FEC688 /* wav2png.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = wav2png.cpp; sourceTree = "<group>"; };
+		9AAF795D158D1A3C00FEC688 /* wav2png.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = wav2png.hpp; sourceTree = "<group>"; };
+		9AAF7964158D1A4A00FEC688 /* AppDelegate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
+		9AAF7965158D1A4A00FEC688 /* AppDelegate.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AppDelegate.m; sourceTree = "<group>"; };
+		9AAF7967158D1A4A00FEC688 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.rtf; name = en; path = en.lproj/Credits.rtf; sourceTree = "<group>"; };
+		9AAF7969158D1A4A00FEC688 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
+		9AAF796B158D1A4A00FEC688 /* en */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = en; path = en.lproj/MainMenu.xib; sourceTree = "<group>"; };
+		9AAF796C158D1A4A00FEC688 /* main.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
+		9AAF796D158D1A4A00FEC688 /* wav2pngDroplet-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "wav2pngDroplet-Info.plist"; sourceTree = "<group>"; };
+		9AAF796E158D1A4A00FEC688 /* wav2pngDroplet-Prefix.pch */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "wav2pngDroplet-Prefix.pch"; sourceTree = "<group>"; };
+		9AAF796F158D1A4A00FEC688 /* WaveformDropImageView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WaveformDropImageView.h; sourceTree = "<group>"; };
+		9AAF7970158D1A4A00FEC688 /* WaveformDropImageView.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; path = WaveformDropImageView.mm; sourceTree = "<group>"; };
+		9AAF797C158D1CC600FEC688 /* wav2png_objc.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; path = wav2png_objc.mm; sourceTree = "<group>"; };
+		9AAF797E158D279C00FEC688 /* Defaults.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = Defaults.plist; sourceTree = "<group>"; };
+		9AFD2A76158CB47C00625786 /* wav2png */ = {isa = PBXFileReference; explicitFileType = "compiled.mach-o.executable"; includeInIndex = 0; path = wav2png; sourceTree = BUILT_PRODUCTS_DIR; };
+		9AFD2A8B158CB52400625786 /* libboost_program_options-mt.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = "libboost_program_options-mt.dylib"; path = "usr/local/lib/libboost_program_options-mt.dylib"; sourceTree = SDKROOT; };
+/* End PBXFileReference section */
+
+/* Begin PBXFrameworksBuildPhase section */
+		9A9F70FB158CC3CD00727F23 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				9A9F7102158CC3CD00727F23 /* Cocoa.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		9AFD2A73158CB47C00625786 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				9AFD2A8C158CB52400625786 /* libboost_program_options-mt.dylib in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXFrameworksBuildPhase section */
+
+/* Begin PBXGroup section */
+		9A367A4F158CB39500AA976A = {
+			isa = PBXGroup;
+			children = (
+				9AAF7963158D1A4A00FEC688 /* wav2pngDroplet */,
+				9AAF7958158D1A3C00FEC688 /* CommandLine */,
+				9A9F711F158CC8F700727F23 /* icon.icns */,
+				9AFD2A8B158CB52400625786 /* libboost_program_options-mt.dylib */,
+				9A9F7100158CC3CD00727F23 /* Frameworks */,
+				9AFD2A77158CB47C00625786 /* Products */,
+			);
+			sourceTree = "<group>";
+		};
+		9A9F7100158CC3CD00727F23 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				9A9F7101158CC3CD00727F23 /* Cocoa.framework */,
+				9A9F7103158CC3CD00727F23 /* Other Frameworks */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		9A9F7103158CC3CD00727F23 /* Other Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				9A9F7104158CC3CD00727F23 /* AppKit.framework */,
+				9A9F7105158CC3CD00727F23 /* CoreData.framework */,
+				9A9F7106158CC3CD00727F23 /* Foundation.framework */,
+			);
+			name = "Other Frameworks";
+			sourceTree = "<group>";
+		};
+		9AAF7958158D1A3C00FEC688 /* CommandLine */ = {
+			isa = PBXGroup;
+			children = (
+				9AAF795C158D1A3C00FEC688 /* wav2png.cpp */,
+				9AAF7959158D1A3C00FEC688 /* main.cpp */,
+				9AAF795A158D1A3C00FEC688 /* options.hpp */,
+				9AAF795B158D1A3C00FEC688 /* version.hpp */,
+				9AAF795D158D1A3C00FEC688 /* wav2png.hpp */,
+			);
+			name = CommandLine;
+			path = ../../src;
+			sourceTree = "<group>";
+		};
+		9AAF7963158D1A4A00FEC688 /* wav2pngDroplet */ = {
+			isa = PBXGroup;
+			children = (
+				9AAF797E158D279C00FEC688 /* Defaults.plist */,
+				9AAF7964158D1A4A00FEC688 /* AppDelegate.h */,
+				9AAF7965158D1A4A00FEC688 /* AppDelegate.m */,
+				9AAF7966158D1A4A00FEC688 /* Credits.rtf */,
+				9AAF7968158D1A4A00FEC688 /* InfoPlist.strings */,
+				9AAF796A158D1A4A00FEC688 /* MainMenu.xib */,
+				9AAF796C158D1A4A00FEC688 /* main.m */,
+				9AAF796D158D1A4A00FEC688 /* wav2pngDroplet-Info.plist */,
+				9AAF796E158D1A4A00FEC688 /* wav2pngDroplet-Prefix.pch */,
+				9AAF796F158D1A4A00FEC688 /* WaveformDropImageView.h */,
+				9AAF7970158D1A4A00FEC688 /* WaveformDropImageView.mm */,
+				9AAF797C158D1CC600FEC688 /* wav2png_objc.mm */,
+			);
+			path = wav2pngDroplet;
+			sourceTree = "<group>";
+		};
+		9AFD2A77158CB47C00625786 /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				9AFD2A76158CB47C00625786 /* wav2png */,
+				9A9F70FE158CC3CD00727F23 /* wav2pngDroplet.app */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+/* End PBXGroup section */
+
+/* Begin PBXNativeTarget section */
+		9A9F70FD158CC3CD00727F23 /* wav2pngDroplet */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 9A9F7119158CC3CD00727F23 /* Build configuration list for PBXNativeTarget "wav2pngDroplet" */;
+			buildPhases = (
+				9A9F70FA158CC3CD00727F23 /* Sources */,
+				9A9F70FB158CC3CD00727F23 /* Frameworks */,
+				9A9F70FC158CC3CD00727F23 /* Resources */,
+				9AAF7983158D3BA500FEC688 /* CopyFiles */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = wav2pngDroplet;
+			productName = wav2png_gui;
+			productReference = 9A9F70FE158CC3CD00727F23 /* wav2pngDroplet.app */;
+			productType = "com.apple.product-type.application";
+		};
+		9AFD2A75158CB47C00625786 /* wav2png */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 9AFD2A7E158CB47C00625786 /* Build configuration list for PBXNativeTarget "wav2png" */;
+			buildPhases = (
+				9AFD2A72158CB47C00625786 /* Sources */,
+				9AFD2A73158CB47C00625786 /* Frameworks */,
+				9AFD2A74158CB47C00625786 /* CopyFiles */,
+				9A9F70F9158CB94D00727F23 /* ShellScript */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = wav2png;
+			productName = wav2png;
+			productReference = 9AFD2A76158CB47C00625786 /* wav2png */;
+			productType = "com.apple.product-type.tool";
+		};
+/* End PBXNativeTarget section */
+
+/* Begin PBXProject section */
+		9A367A51158CB39500AA976A /* Project object */ = {
+			isa = PBXProject;
+			attributes = {
+				LastUpgradeCheck = 0430;
+			};
+			buildConfigurationList = 9A367A54158CB39500AA976A /* Build configuration list for PBXProject "wav2png" */;
+			compatibilityVersion = "Xcode 3.2";
+			developmentRegion = English;
+			hasScannedForEncodings = 0;
+			knownRegions = (
+				en,
+			);
+			mainGroup = 9A367A4F158CB39500AA976A;
+			productRefGroup = 9AFD2A77158CB47C00625786 /* Products */;
+			projectDirPath = "";
+			projectRoot = "";
+			targets = (
+				9AFD2A75158CB47C00625786 /* wav2png */,
+				9A9F70FD158CC3CD00727F23 /* wav2pngDroplet */,
+			);
+		};
+/* End PBXProject section */
+
+/* Begin PBXResourcesBuildPhase section */
+		9A9F70FC158CC3CD00727F23 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				9A9F7120158CC8F800727F23 /* icon.icns in Resources */,
+				9AAF7973158D1A4A00FEC688 /* Credits.rtf in Resources */,
+				9AAF7974158D1A4A00FEC688 /* InfoPlist.strings in Resources */,
+				9AAF7975158D1A4A00FEC688 /* MainMenu.xib in Resources */,
+				9AAF797F158D279C00FEC688 /* Defaults.plist in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXResourcesBuildPhase section */
+
+/* Begin PBXShellScriptBuildPhase section */
+		9A9F70F9158CB94D00727F23 /* ShellScript */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "cd ..;make ../src/version.hpp";
+		};
+/* End PBXShellScriptBuildPhase section */
+
+/* Begin PBXSourcesBuildPhase section */
+		9A9F70FA158CC3CD00727F23 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				9AAF7972158D1A4A00FEC688 /* AppDelegate.m in Sources */,
+				9AAF7977158D1A4A00FEC688 /* main.m in Sources */,
+				9AAF797A158D1A4A00FEC688 /* WaveformDropImageView.mm in Sources */,
+				9AAF797D158D1CC600FEC688 /* wav2png_objc.mm in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		9AFD2A72158CB47C00625786 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				9AAF795E158D1A3C00FEC688 /* main.cpp in Sources */,
+				9AAF7960158D1A3C00FEC688 /* wav2png.cpp in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXSourcesBuildPhase section */
+
+/* Begin PBXVariantGroup section */
+		9AAF7966158D1A4A00FEC688 /* Credits.rtf */ = {
+			isa = PBXVariantGroup;
+			children = (
+				9AAF7967158D1A4A00FEC688 /* en */,
+			);
+			name = Credits.rtf;
+			sourceTree = "<group>";
+		};
+		9AAF7968158D1A4A00FEC688 /* InfoPlist.strings */ = {
+			isa = PBXVariantGroup;
+			children = (
+				9AAF7969158D1A4A00FEC688 /* en */,
+			);
+			name = InfoPlist.strings;
+			sourceTree = "<group>";
+		};
+		9AAF796A158D1A4A00FEC688 /* MainMenu.xib */ = {
+			isa = PBXVariantGroup;
+			children = (
+				9AAF796B158D1A4A00FEC688 /* en */,
+			);
+			name = MainMenu.xib;
+			sourceTree = "<group>";
+		};
+/* End PBXVariantGroup section */
+
+/* Begin XCBuildConfiguration section */
+		9A367A57158CB39600AA976A /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				ARCHS = "$(NATIVE_ARCH_ACTUAL)";
+				COPY_PHASE_STRIP = NO;
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_ENABLE_OBJC_EXCEPTIONS = YES;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				GCC_SYMBOLS_PRIVATE_EXTERN = NO;
+				GCC_VERSION = com.apple.compilers.llvm.clang.1_0;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				HEADER_SEARCH_PATHS = (
+					"$(SRCROOT)/../../dependencies/include/",
+					/usr/X11/include,
+				);
+				LIBRARY_SEARCH_PATHS = /usr/X11/lib;
+				MACOSX_DEPLOYMENT_TARGET = 10.7;
+				OTHER_LDFLAGS = (
+					"-lpng15",
+					"-lsndfile",
+				);
+				SDKROOT = macosx;
+			};
+			name = Debug;
+		};
+		9A367A58158CB39600AA976A /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				ARCHS = "$(NATIVE_ARCH_ACTUAL)";
+				COPY_PHASE_STRIP = YES;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_ENABLE_OBJC_EXCEPTIONS = YES;
+				GCC_VERSION = com.apple.compilers.llvm.clang.1_0;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				HEADER_SEARCH_PATHS = (
+					"$(SRCROOT)/../../dependencies/include/",
+					/usr/X11/include,
+				);
+				LIBRARY_SEARCH_PATHS = /usr/X11/lib;
+				MACOSX_DEPLOYMENT_TARGET = 10.7;
+				OTHER_LDFLAGS = (
+					"-lpng15",
+					"-lsndfile",
+				);
+				SDKROOT = macosx;
+			};
+			name = Release;
+		};
+		9A9F711A158CC3CD00727F23 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				GCC_PRECOMPILE_PREFIX_HEADER = YES;
+				GCC_PREFIX_HEADER = "wav2pngDroplet/wav2pngDroplet-Prefix.pch";
+				INFOPLIST_FILE = "wav2pngDroplet/wav2pngDroplet-Info.plist";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				WRAPPER_EXTENSION = app;
+			};
+			name = Debug;
+		};
+		9A9F711B158CC3CD00727F23 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				GCC_PRECOMPILE_PREFIX_HEADER = YES;
+				GCC_PREFIX_HEADER = "wav2pngDroplet/wav2pngDroplet-Prefix.pch";
+				INFOPLIST_FILE = "wav2pngDroplet/wav2pngDroplet-Info.plist";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				WRAPPER_EXTENSION = app;
+			};
+			name = Release;
+		};
+		9AFD2A7F158CB47C00625786 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				PRODUCT_NAME = "$(TARGET_NAME)";
+			};
+			name = Debug;
+		};
+		9AFD2A80158CB47C00625786 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				PRODUCT_NAME = "$(TARGET_NAME)";
+			};
+			name = Release;
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		9A367A54158CB39500AA976A /* Build configuration list for PBXProject "wav2png" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				9A367A57158CB39600AA976A /* Debug */,
+				9A367A58158CB39600AA976A /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		9A9F7119158CC3CD00727F23 /* Build configuration list for PBXNativeTarget "wav2pngDroplet" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				9A9F711A158CC3CD00727F23 /* Debug */,
+				9A9F711B158CC3CD00727F23 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		9AFD2A7E158CB47C00625786 /* Build configuration list for PBXNativeTarget "wav2png" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				9AFD2A7F158CB47C00625786 /* Debug */,
+				9AFD2A80158CB47C00625786 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+/* End XCConfigurationList section */
+	};
+	rootObject = 9A367A51158CB39500AA976A /* Project object */;
+}
