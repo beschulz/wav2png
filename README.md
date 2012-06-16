@@ -19,6 +19,8 @@ On Mac OS X, there is a little application you can drop your audio files into. T
 
 ![DropletScreenshot](https://github.com/beschulz/wav2png/raw/master/examples/DropletScreenshot.png)
 
+The binary can be downloaded [here](http://goo.gl/8UCKd).
+
 You can supply a foreground and background color in rgba
 
 	./wav2png --foreground-color=ffb400aa --background-color=2e4562ff -o ./examples/example0.png music.wav
