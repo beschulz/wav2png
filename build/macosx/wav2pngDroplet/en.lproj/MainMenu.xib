@@ -667,6 +667,14 @@
 					<int key="connectionID">1784</int>
 				</object>
 				<object class="IBConnectionRecord">
+					<object class="IBOutletConnection" key="connection">
+						<string key="label">log_scale</string>
+						<reference key="source" ref="976324537"/>
+						<reference key="destination" ref="431714963"/>
+					</object>
+					<int key="connectionID">2307</int>
+				</object>
+				<object class="IBConnectionRecord">
 					<object class="IBBindingConnection" key="connection">
 						<string key="label">value: values.foreground_color</string>
 						<reference key="source" ref="764223301"/>
@@ -1854,7 +1862,7 @@
 			<nil key="activeLocalization"/>
 			<dictionary class="NSMutableDictionary" key="localizations"/>
 			<nil key="sourceID"/>
-			<int key="maxID">2306</int>
+			<int key="maxID">2307</int>
 		</object>
 		<object class="IBClassDescriber" key="IBDocument.Classes">
 			<array class="NSMutableArray" key="referencedPartialClassDescriptions">
@@ -1866,6 +1874,7 @@
 						<string key="background">NSColorWell</string>
 						<string key="foreground">NSColorWell</string>
 						<string key="height_box">NSTextField</string>
+						<string key="log_scale">NSButton</string>
 						<string key="waveform">NSImageView</string>
 						<string key="width_box">NSTextField</string>
 						<string key="window">NSWindow</string>
@@ -1886,6 +1895,10 @@
 						<object class="IBToOneOutletInfo" key="height_box">
 							<string key="name">height_box</string>
 							<string key="candidateClassName">NSTextField</string>
+						</object>
+						<object class="IBToOneOutletInfo" key="log_scale">
+							<string key="name">log_scale</string>
+							<string key="candidateClassName">NSButton</string>
 						</object>
 						<object class="IBToOneOutletInfo" key="waveform">
 							<string key="name">waveform</string>

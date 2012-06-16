@@ -1,3 +1,5 @@
+#include "wav2png.hpp"
+
 #include <math.h>
 #include <iostream>
 #include <assert.h>
@@ -68,7 +70,8 @@ void compute_waveform(
   const png::rgba_pixel& fg_color,
   bool use_db_scale,
   float db_min,
-  float db_max
+  float db_max,
+  progress_callback_t progress_callback
 )
 {
   using std::size_t;
@@ -145,11 +148,13 @@ void compute_waveform(
     // print progress
     if ( x%(progress_divisor) == 0 )
     {
-      cerr << "\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\bconverting: " << 100*x/image.get_width() << "%";
+      if ( progress_callback && !progress_callback( 100*x/image.get_width() ) )
+          return;
     }
   }
   
-  cerr << "\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\bconverting: 100%" << endl;
+    if ( progress_callback && !progress_callback( 100 ) )
+        return;
 
   // upscale the generated image (nearest neighbour)
   if (not_enough_samples)

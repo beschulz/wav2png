@@ -13,5 +13,6 @@
 @property (assign) IBOutlet NSImageView *waveform;
 
 @property (assign) IBOutlet NSButton *autosave;
+@property (assign) IBOutlet NSButton *log_scale;
 
 @end

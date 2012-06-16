@@ -10,6 +10,7 @@
 @synthesize height_box;
 @synthesize waveform;
 @synthesize autosave;
+@synthesize log_scale;
 
 - (void)dealloc
 {

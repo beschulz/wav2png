@@ -48,6 +48,9 @@
 /* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
+		9A0F3BE6158D451000A04ED0 /* README.md */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; name = README.md; path = ../../README.md; sourceTree = "<group>"; };
+		9A0F3BE8158D45C200A04ED0 /* version.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = version.hpp; sourceTree = "<group>"; };
+		9A0F3BE9158D45FC00A04ED0 /* version.txt */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; name = version.txt; path = ../version.txt; sourceTree = "<group>"; };
 		9A9F70FE158CC3CD00727F23 /* wav2pngDroplet.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = wav2pngDroplet.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		9A9F7101158CC3CD00727F23 /* Cocoa.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Cocoa.framework; path = System/Library/Frameworks/Cocoa.framework; sourceTree = SDKROOT; };
 		9A9F7104158CC3CD00727F23 /* AppKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AppKit.framework; path = System/Library/Frameworks/AppKit.framework; sourceTree = SDKROOT; };
@@ -56,7 +59,6 @@
 		9A9F711F158CC8F700727F23 /* icon.icns */ = {isa = PBXFileReference; lastKnownFileType = image.icns; path = icon.icns; sourceTree = "<group>"; };
 		9AAF7959158D1A3C00FEC688 /* main.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = main.cpp; sourceTree = "<group>"; };
 		9AAF795A158D1A3C00FEC688 /* options.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = options.hpp; sourceTree = "<group>"; };
-		9AAF795B158D1A3C00FEC688 /* version.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = version.hpp; sourceTree = "<group>"; };
 		9AAF795C158D1A3C00FEC688 /* wav2png.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = wav2png.cpp; sourceTree = "<group>"; };
 		9AAF795D158D1A3C00FEC688 /* wav2png.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = wav2png.hpp; sourceTree = "<group>"; };
 		9AAF7964158D1A4A00FEC688 /* AppDelegate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
@@ -98,6 +100,8 @@
 		9A367A4F158CB39500AA976A = {
 			isa = PBXGroup;
 			children = (
+				9A0F3BE9158D45FC00A04ED0 /* version.txt */,
+				9A0F3BE6158D451000A04ED0 /* README.md */,
 				9AAF7963158D1A4A00FEC688 /* wav2pngDroplet */,
 				9AAF7958158D1A3C00FEC688 /* CommandLine */,
 				9A9F711F158CC8F700727F23 /* icon.icns */,
@@ -129,10 +133,10 @@
 		9AAF7958158D1A3C00FEC688 /* CommandLine */ = {
 			isa = PBXGroup;
 			children = (
+				9A0F3BE8158D45C200A04ED0 /* version.hpp */,
 				9AAF795C158D1A3C00FEC688 /* wav2png.cpp */,
 				9AAF7959158D1A3C00FEC688 /* main.cpp */,
 				9AAF795A158D1A3C00FEC688 /* options.hpp */,
-				9AAF795B158D1A3C00FEC688 /* version.hpp */,
 				9AAF795D158D1A3C00FEC688 /* wav2png.hpp */,
 			);
 			name = CommandLine;
@@ -193,9 +197,9 @@
 			buildConfigurationList = 9AFD2A7E158CB47C00625786 /* Build configuration list for PBXNativeTarget "wav2png" */;
 			buildPhases = (
 				9AFD2A72158CB47C00625786 /* Sources */,
+				9A9F70F9158CB94D00727F23 /* ShellScript */,
 				9AFD2A73158CB47C00625786 /* Frameworks */,
 				9AFD2A74158CB47C00625786 /* CopyFiles */,
-				9A9F70F9158CB94D00727F23 /* ShellScript */,
 			);
 			buildRules = (
 			);
@@ -254,8 +258,10 @@
 			files = (
 			);
 			inputPaths = (
+				"$(SRCROOT)/../version.txt",
 			);
 			outputPaths = (
+				"$(SRCROOT)/../../src/version.hpp",
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;

@@ -160,7 +160,7 @@ NSString *kPrivateDragUTI = @"de.betabugs.cocoadraganddrop";
                              image,
                              background_color,
                              foreground_color,
-                             false,
+                             app_delegate.log_scale.state,
                              -40,
                              0,
                              ^(int p){

@@ -9,6 +9,13 @@
 
 #include "wav2png.hpp"
 
+bool progress_callback(int percent)
+{
+    std::cerr << "\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\bconverting: " << percent << "%" << std::endl;
+    return true;
+}
+
+
 int main(int argc, char* argv[])
 {
   Options options(argc, argv);
@@ -41,7 +48,8 @@ int main(int argc, char* argv[])
     options.foreground_color,
     options.use_db_scale,
     options.db_min,
-    options.db_max
+    options.db_max,
+    progress_callback
   );
 
   // write image to disk
