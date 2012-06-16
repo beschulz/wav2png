@@ -15,6 +15,10 @@ They are ment to be used in webpages. They are not anti-aliased, but look really
 
 # Examples
 
+On Mac OS X, there is a little application you can drop your audio files into. The images are either saved in the same directory as the audio file (autosave checkbox) or can be drag'n'droped into photoshop (or what ever). You can select foreground and background colors and set the dimensions of the generated image.
+
+![DropletScreenshot](https://github.com/beschulz/wav2png/raw/master/examples/DropletScreenshot.png)
+
 You can supply a foreground and background color in rgba
 
 	./wav2png --foreground-color=ffb400aa --background-color=2e4562ff -o ./examples/example0.png music.wav
