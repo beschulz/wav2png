@@ -11,8 +11,10 @@ BINARY=./bin/$(UNAME)/wav2png
 
 ifeq ($(UNAME), Linux)
 LD_PLATFORM_FLAGS=$(LD_FLAGS) -lboost_program_options
+CC=g++
 endif
 ifeq ($(UNAME), Darwin)
+CC=clang++
 LD_PLATFORM_FLAGS=$(LD_FLAGS) -lboost_program_options-mt
 endif
 
@@ -31,7 +33,7 @@ all: $(BINARY)
 
 $(BINARY): Makefile ./src/*.cpp ./src/*.hpp
 	mkdir -p `dirname $(BINARY)`
-	g++ -O3 -Wall -Werror $(INCLUDES) $(LD_PLATFORM_FLAGS) ./src/*.cpp -o $(BINARY)
+	$(CC) -O3 -Wall -Werror $(INCLUDES) $(LD_PLATFORM_FLAGS) ./src/*.cpp -o $(BINARY)
 
 clean:
 	rm -f $(BINARY)
@@ -39,11 +41,11 @@ clean:
 	rm -f ./src/version.hpp
 
 profile:
-	g++ -static -O3 -Wall -Werror $(INCLUDES) $(LD_PLATFORM_FLAGS) ./src/wav2png.cpp -o $(BINARY)_profile -g -pg
+	$(CC) -static -O3 -Wall -Werror $(INCLUDES) $(LD_PLATFORM_FLAGS) ./src/wav2png.cpp -o $(BINARY)_profile -g -pg
 	$(BINARY)_profile baked.wav
 	gprof $(BINARY)_profile|less
 
 examples/example1.png: $(BINARY) README.md
-	cat README.md|grep wav2png|grep examples/|grep -v github|while read line; do ./bin/$(UNAME)/$$line; done
+	cat README.md|grep wav2png|grep examples/|grep -v github|while read line; do time ./bin/$(UNAME)/$$line; done
 
 examples: examples/example1.png

@@ -25,7 +25,7 @@ template <> struct sample_scale<short>
 
 template <> struct sample_scale<float>
 {
-  static const float value = 1.0f;
+  static const int value = 1;
 };
 
 /*
