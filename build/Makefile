@@ -32,7 +32,7 @@ $(SRC)/version.hpp: Makefile version.txt
 	echo "} /* anonymous namespace */" >> $(SRC)/version.hpp
 	echo "#endif /* VERSION_HPP__ */" >> $(SRC)/version.hpp
 
-$(BINARY): Makefile $(SRC)/*.cpp $(SRC)/*.hpp
+$(BINARY): $(SRC)/*.cpp $(SRC)/*.hpp $(SRC)/version.hpp
 	mkdir -p `dirname $(BINARY)`
 	$(CC) -O3 -Wall -Werror $(INCLUDES) $(LD_PLATFORM_FLAGS) $(SRC)/*.cpp -o $(BINARY)
 
@@ -46,8 +46,11 @@ profile:
 	$(BINARY)_profile baked.wav
 	gprof $(BINARY)_profile|less
 
+ESCAPED_BINARY=$(shell echo $(BINARY) | sed 's/\//\\\//g' )
+
 ../examples/example0.png: $(BINARY) ../README.md
-	cat ../README.md|grep wav2png|grep examples/|grep -v github|while read line; do cd ..; time ./bin/$(UNAME)/$$line; cd build; done
+	#cat ../README.md|grep wav2png|grep examples/|grep -v github|grep -v sox|while read line; do cd ..; time ./bin/$(UNAME)/$$line; cd build; done
+	cat ../README.md|grep wav2png|grep examples/|grep -v github|while read line; do eval `echo $$line|sed "s/wav2png/$(ESCAPED_BINARY)/g"`; done
 
 examples: ../examples/example0.png
 

@@ -11,7 +11,7 @@
 
 bool progress_callback(int percent)
 {
-    std::cerr << "\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\bconverting: " << percent << "%" << std::endl;
+    std::cerr << "\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\bconverting: " << percent << "%";
     return true;
 }
 
@@ -51,6 +51,7 @@ int main(int argc, char* argv[])
     options.db_max,
     progress_callback
   );
+  cerr << endl;
 
   // write image to disk
   image.write(options.output_file_name);
