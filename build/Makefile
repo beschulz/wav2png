@@ -36,7 +36,7 @@ $(SRC)/version.hpp: Makefile version.txt
 
 $(BINARY): $(SRC)/*.cpp $(SRC)/*.hpp $(SRC)/version.hpp
 	mkdir -p `dirname $(BINARY)`
-	$(CC) -O3 -Wall -Werror $(INCLUDES) $(LD_PLATFORM_FLAGS) $(SRC)/*.cpp -o $(BINARY)
+	$(CC) -O3 -Wall -Werror $(SRC)/*.cpp $(INCLUDES) $(LD_PLATFORM_FLAGS) -o $(BINARY)
 
 clean:
 	rm -f $(BINARY)
@@ -44,7 +44,7 @@ clean:
 	rm -f $(SRC)/version.hpp
 
 profile:
-	$(CC) -static -O3 -Wall -Werror $(INCLUDES) $(LD_PLATFORM_FLAGS) $(SRC)/wav2png.cpp -o $(BINARY)_profile -g -pg
+	$(CC) -O3 -Wall -Werror $(SRC)/*.cpp $(INCLUDES) $(LD_PLATFORM_FLAGS) -o $(BINARY)_profile -g -pg
 	$(BINARY)_profile baked.wav
 	gprof $(BINARY)_profile|less
 

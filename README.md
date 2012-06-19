@@ -97,7 +97,7 @@ install dependencies: libsndfile++, libsndfile, libpng, libboost-program-options
 
 on debian, ubuntu:
 
-    apt-get install libsndfile1-dev libpng++-dev libpng12-dev libboost-program-options-dev
+    apt-get install make g++ libsndfile1-dev libpng++-dev libpng12-dev libboost-program-options-dev
 
 ## Build
     make all
