@@ -114,7 +114,7 @@ If you have suggestions for performance improvements, please drop a line.
 	* alternatively, you can install it anywhere else, where the compiler can find it.
 
 ### Build
-* either open build/macosx/wav2png.xcodeproj in Xcode or
+* either open build/macosx/wav2png.xcodeproj in Xcode to build it there, or
 	cd build
 	make all
 
