@@ -107,15 +107,14 @@ If you have suggestions for performance improvements, please drop a line.
 * Get the Xcode command line tools
 	* Starting with Xcode 4.3, Apple does not install command line tools by default anymore, so after Xcode installation, go to Preferences > Downloads > Components > Command Line Tools and click Install. You can also directly [download Command Line Tools](https://developer.apple.com/downloads) for Xcode without getting Xcode.
 * [Install homebrew](https://github.com/mxcl/homebrew/wiki/installation)
-* install libsndfile
-	brew install libsndfile
+* install libsndfile:# brew install libsndfile
 * install [png++](http://savannah.nongnu.org/projects/pngpp/)
 	* put the headers in dependencies/include, so that dependencies/include/png++/png.hpp can be found.
 	* alternatively, you can install it anywhere else, where the compiler can find it.
 
 ### Build
 * either open build/macosx/wav2png.xcodeproj in Xcode to build it there, or
-* cd build && make all
+* # cd build && make all
 
 # Usage
     > wav2png --help
