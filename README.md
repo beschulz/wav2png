@@ -98,6 +98,7 @@ If you have suggestions for performance improvements, please drop a line.
     apt-get install make g++ libsndfile1-dev libpng++-dev libpng12-dev libboost-program-options-dev
 
 ### Build
+	cd build
     make all
 
 ## On Max OS
@@ -111,6 +112,11 @@ If you have suggestions for performance improvements, please drop a line.
 * install [png++](http://savannah.nongnu.org/projects/pngpp/)
 	* put the headers in dependencies/include, so that dependencies/include/png++/png.hpp can be found.
 	* alternatively, you can install it anywhere else, where the compiler can find it.
+
+### Build
+* either open build/macosx/wav2png.xcodeproj in Xcode or
+	cd build
+	make all
 
 # Usage
     > wav2png --help
