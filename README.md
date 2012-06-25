@@ -92,15 +92,25 @@ If you have suggestions for performance improvements, please drop a line.
 
 # Installation
 
-## install dependencies
-install dependencies: libsndfile++, libsndfile, libpng, libboost-program-options
+## On Linux (Ubuntu, Debian)
 
-on debian, ubuntu:
-
+### install dependencies
     apt-get install make g++ libsndfile1-dev libpng++-dev libpng12-dev libboost-program-options-dev
 
-## Build
+### Build
     make all
+
+## On Max OS
+
+### install dependencies
+* Get the Xcode command line tools
+	* Starting with Xcode 4.3, Apple does not install command line tools by default anymore, so after Xcode installation, go to Preferences > Downloads > Components > Command Line Tools and click Install. You can also directly [download Command Line Tools](https://developer.apple.com/downloads) for Xcode without getting Xcode.
+* [Install homebrew](https://github.com/mxcl/homebrew/wiki/installation)
+* install libsndfile
+	brew install libsndfile
+* install [png++](http://savannah.nongnu.org/projects/pngpp/)
+	* put the headers in dependencies/include, so that dependencies/include/png++/png.hpp can be found.
+	* alternatively, you can install it anywhere else, where the compiler can find it.
 
 # Usage
     > wav2png --help

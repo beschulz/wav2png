@@ -5,11 +5,10 @@ version.hpp
 bin/wav2png_profile
 *.wav
 *.wav.png
-dependencies
+dependencies/include/png++
 wav2pngDroplet.app
 .gitignore~
 icons/*.png
 music.wav
 tteesstt.png
-
 song.mp3
