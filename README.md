@@ -8,6 +8,9 @@ License: GPL
 
 create waveform pngs out of audio files.
 
+Note: if youre looking for a way to generate waveformjs.org compatible json out of audio file, take a look at
+[wav2json](https://github.com/beschulz/wav2json)
+
 all audio formats, that are readable by libsndfile are supported.
 
 The generated images look like the ones you can find on soundcloud.
