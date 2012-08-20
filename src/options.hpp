@@ -71,7 +71,8 @@ struct Options
 			// try to read stuff from config file
 			try
 			{
-				po::store(po::parse_config_file<char>(config_file_name.c_str(),config_file_options),vm);
+				std::ifstream config_file(config_file_name.c_str()); //backward compatibility with older boost versions
+				po::store(po::parse_config_file<char>(config_file,config_file_options),vm);
 				po::notify(vm);
 			} catch(po::reading_file& e)
 			{
