@@ -36,6 +36,7 @@ $(SRC)/version.hpp: Makefile version.txt
 
 $(BINARY): $(SRC)/*.cpp $(SRC)/*.hpp $(SRC)/version.hpp
 	mkdir -p `dirname $(BINARY)`
+	echo $(INCLUDES)
 	$(CC) -O3 -Wall -Werror $(SRC)/*.cpp $(INCLUDES) $(LD_PLATFORM_FLAGS) -o $(BINARY)
 
 clean:
