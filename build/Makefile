@@ -8,6 +8,8 @@ UNAME := $(shell uname)
 BINARY=../bin/$(UNAME)/wav2png
 SRC=../src
 
+INCLUDES=-I../dependencies/include
+
 ifeq ($(UNAME), Linux)
 LD_PLATFORM_FLAGS=$(LD_FLAGS) -lboost_program_options
 CC=g++
@@ -15,9 +17,7 @@ endif
 ifeq ($(UNAME), Darwin)
 CC=clang++
 LD_PLATFORM_FLAGS=$(LD_FLAGS) -lboost_program_options-mt
-INCLUDES=\
-	-I/Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX10.7.sdk/usr/X11/include/\
-    -I../dependencies/include
+INCLUDES+= -I/Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX10.7.sdk/usr/X11/include/
 endif
 
 all: $(BINARY)
