@@ -122,16 +122,18 @@ void compute_waveform(
     }
 
     // compute "span" from top of image to min
-    size_t y1 = use_db_scale?
+    float y1_ = use_db_scale?
       h/2 - map2range( float2db(min / (float)sample_scale<sample_type>::value ), db_min, db_max, 0, h/2):
       map2range( min, -sample_scale<sample_type>::value, 0, 0, h/2);
-    assert(0 <= y1 && y1 <= h/2);
+    assert(0 <= y1_ && y1_ <= h/2);
+    size_t y1 = (size_t)y1_;
 
     // compute "span" from max to bottom of image
-    size_t y2 = use_db_scale?
+    float y2_ = use_db_scale?
       h/2 + map2range( float2db(max / (float)sample_scale<sample_type>::value ), db_min, db_max, 0, h/2):
       map2range( max, 0, sample_scale<sample_type>::value, h/2, h);
-    assert(h/2 <= y2 && y2 <= h);
+    assert(h/2 <= y2_ && y2_ <= h);
+    size_t y2 = (float)y2_;
     
     // fill span top to min
     for(size_t y=0; y<y1;++y)

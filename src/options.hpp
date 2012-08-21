@@ -69,19 +69,19 @@ struct Options
 			po::notify(vm);
 
 			// try to read stuff from config file
-			try
+			std::ifstream config_file(config_file_name.c_str()); //backward compatibility with older boost versions
+			if (!config_file.good())
 			{
-				std::ifstream config_file(config_file_name.c_str()); //backward compatibility with older boost versions
-				po::store(po::parse_config_file<char>(config_file,config_file_options),vm);
-				po::notify(vm);
-			} catch(po::reading_file& e)
-			{
-				// notify of error, if the cfg is not the default one
 				if ( config_file_name != "wav2png.cfg" )
 				{
-					std::cerr << "Error: " << e.what() << std::endl;
+					std::cerr << "Error: " << "failed to read config file '" << config_file_name << "'!" << std::endl;
 					parse_error = true;
 				}
+			}
+			else
+			{
+				po::store(po::parse_config_file<char>(config_file,config_file_options),vm);
+				po::notify(vm);
 			}
 
 			//but options from command line override the ones from the config file, so we just parse them again

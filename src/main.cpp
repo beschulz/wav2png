@@ -25,7 +25,7 @@ int main(int argc, char* argv[])
   using std::cerr;
 
   // open sound file
-  SndfileHandle wav(options.input_file_name);
+  SndfileHandle wav(options.input_file_name.c_str());
 
   // handle error
   if ( wav.error() )

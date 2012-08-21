@@ -115,6 +115,17 @@ If you have suggestions for performance improvements, please drop a line.
 	* put the headers in dependencies/include, so that dependencies/include/png++/png.hpp can be found.
 	* alternatively, you can install it anywhere else, where the compiler can find it.
 
+## On CentOS
+* yum install libsndfile-devel
+* yum install libboost-devel
+* yum install libpng-devel
+* cd wav2png/dependencies/include
+* wget http://download.savannah.gnu.org/releases/pngpp/png++-0.2.5.tar.gz
+* tar -xvfz png++-0.2.5.tar.gz
+* mv png++-0.2.5 png++
+* cd ../../build
+* make #(you might have to remove -Werror in the Makefile)
+
 ### Build
 * either open build/macosx/wav2png.xcodeproj in Xcode to build it there, or
 * in the shell: cd build && make all
