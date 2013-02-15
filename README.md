@@ -76,6 +76,22 @@ But you can also specify colors via --foreground-color and --background-color.
 
 Also gradient overlays and backgrounds look nice.
 
+# Color format
+
+The colors specified via --foreground-color and --background-color are in the following format:
+
+`rrggbbaa` in hexadecimal form.
+
+a few examples:
+
+`ff0000ff` = 100% red, 100% opaque
+`ff00007f` = 100% red, ~50% opaque
+`00ff00ff` = 100% green, 100% opaque
+`0000ffff` = 100% blue, 100% opaque
+
+I usually pick a color in photoshop or some online color picker, copy the values for rrggbb and calculate (or guess) the alpha I want.
+
+
 # Performance
 Performance was one of the main goals, because all the other solutions I've tried where incredibly slow.
 
