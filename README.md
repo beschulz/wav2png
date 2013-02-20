@@ -137,15 +137,13 @@ If you have suggestions for performance improvements, please drop a line.
 * in the shell: cd build && make all
 
 ## On CentOS
-* yum install libsndfile-devel
-* yum install libboost-devel
-* yum install libpng-devel
-* cd wav2png/dependencies/include
-* wget http://download.savannah.gnu.org/releases/pngpp/png++-0.2.5.tar.gz
-* tar -xvfz png++-0.2.5.tar.gz
-* mv png++-0.2.5 png++
-* cd ../../build
-* make #(you might have to remove -Werror in the Makefile)
+	yum install libsndfile-devel boost-devel libpng-devel gcc-c++
+	cd wav2png/dependencies/include
+	wget http://download.savannah.gnu.org/releases/pngpp/png++-0.2.5.tar.gz
+	tar zxvf png++-0.2.5.tar.gz && rm png++-0.2.5.tar.gz
+	mv png++-0.2.5 png++
+	cd ../../build
+	make # (you might have to remove -Werror in the Makefile)
 
 # Usage
     > wav2png --help
