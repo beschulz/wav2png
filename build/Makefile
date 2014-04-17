@@ -2,13 +2,13 @@
 
 LD_FLAGS=\
 	`libpng-config --ldflags`\
-    -lsndfile\
+    -lgd -lsndfile -ljpeg -L/opt/local/lib\
 
 UNAME := $(shell uname)
 BINARY=../bin/$(UNAME)/wav2png
 SRC=../src
 
-INCLUDES=-I../dependencies/include
+INCLUDES=-I../dependencies/include -I/opt/local/include
 
 ifeq ($(UNAME), Linux)
 LD_PLATFORM_FLAGS=$(LD_FLAGS) -lboost_program_options
@@ -20,7 +20,7 @@ LD_PLATFORM_FLAGS=$(LD_FLAGS) -lboost_program_options-mt
 INCLUDES+= -I/Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX10.7.sdk/usr/X11/include/
 endif
 
-all: $(BINARY)
+all: wav2png
 
 $(SRC)/version.hpp: Makefile version.txt
 	echo "#ifndef VERSION_HPP__" > $(SRC)/version.hpp
@@ -34,7 +34,7 @@ $(SRC)/version.hpp: Makefile version.txt
 	echo "} /* anonymous namespace */" >> $(SRC)/version.hpp
 	echo "#endif /* VERSION_HPP__ */" >> $(SRC)/version.hpp
 
-$(BINARY): $(SRC)/*.cpp $(SRC)/*.hpp $(SRC)/version.hpp
+wav2png: $(SRC)/*.cpp $(SRC)/*.hpp $(SRC)/version.hpp
 	mkdir -p `dirname $(BINARY)`
 	echo $(INCLUDES)
 	$(CC) -O3 -Wall -Werror $(SRC)/*.cpp $(INCLUDES) $(LD_PLATFORM_FLAGS) -o $(BINARY)
