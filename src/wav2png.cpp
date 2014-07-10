@@ -2,6 +2,7 @@
 
 #include <math.h>
 #include <iostream>
+#include <algorithm>
 #include <assert.h>
 #include <sndfile.hh>
 #include <png++/png.hpp>
@@ -60,6 +61,22 @@ float map2range(float x, float in_min, float in_max, float out_min, float out_ma
   );
 }
 
+
+void draw_vertish_line(png::image< png::rgba_pixel >& image, int x0, int y0, int y1, const png::rgba_pixel& color) {
+  int ydiff = y1 - y0;  // Could be +ve or -ve
+  int abs_ydiff = abs(ydiff);
+  int sign = ydiff == 0 ? 0 : (ydiff / abs_ydiff);      // -1, 0, +1
+  for (int dy = 0; dy <= abs_ydiff; dy++) {
+    int y = y0 + (sign * dy);
+    if (dy < abs_ydiff/2) {
+      image.set_pixel(x0, y, color);
+    }
+    else {
+      image.set_pixel(x0+1, y, color);
+    }
+  }
+}
+
 /*
   compute the waveform of the supplied audio-file and store it into out_image.
 */
@@ -71,6 +88,7 @@ void compute_waveform(
   bool use_db_scale,
   float db_min,
   float db_max,
+  bool line_only,
   progress_callback_t progress_callback
 )
 {
@@ -106,6 +124,7 @@ void compute_waveform(
     for each vertical pixel in the image (x), read frames_per_pixel frames from
     the audio file and find the min and max values.
   */
+  size_t y_median_last;
   for (size_t x = 0; x < image.get_width(); ++x)
   {
     // read frames
@@ -120,6 +139,9 @@ void compute_waveform(
       min = std::min( min, block[i] );
       max = std::max( max, block[i] );
     }
+    std::nth_element(block.begin(), block.begin() + block.size()/2, block.end());
+    sample_type median = block[n/2];
+//    printf("min %d med %d max %d\n", min, median, max);
 
     // compute "span" from top of image to min
     float y1_ = use_db_scale?
@@ -135,17 +157,34 @@ void compute_waveform(
     assert(h/2 <= y2_ && y2_ <= h);
     size_t y2 = (float)y2_;
     
-    // fill span top to min
-    for(size_t y=0; y<y1;++y)
-      image.set_pixel(x, y, bg_color);
+    float y_median_ = use_db_scale?
+      h/2 + map2range( float2db(median / (float)sample_scale<sample_type>::value ), db_min, db_max, 0, h/2):
+      map2range( median, -sample_scale<sample_type>::value, sample_scale<sample_type>::value, 0, h);
+    size_t y_median = (float)y_median_;
+    //printf("ymin %ld ymed %ld ymax %ld\n", y1, y_median, y2);
 
-    // fill span min to max
-    for(size_t y=y1; y<y2;++y)
-      image.set_pixel(x, y, fg_color);
+    if (line_only) {
+      for(size_t y=0; y<h;++y) {
+        image.set_pixel(x, y, bg_color);
+      }
+      if (x != 0) {
+        draw_vertish_line(image, x-1, y_median_last, y_median, fg_color);
+      }
+      y_median_last = y_median;
+    }
+    else {
+      // fill span top to min
+      for(size_t y=0; y<y1;++y)
+        image.set_pixel(x, y, bg_color);
 
-    // fill span max to bottom
-    for(size_t y = y2; y<h; ++y)
-      image.set_pixel(x, y, bg_color);
+      // fill span min to max
+      for(size_t y=y1; y<y2;++y)
+        image.set_pixel(x, y, fg_color);
+
+      // fill span max to bottom
+      for(size_t y = y2; y<h; ++y)
+        image.set_pixel(x, y, bg_color);
+    }
     
     // print progress
     if ( x%(progress_divisor) == 0 )
