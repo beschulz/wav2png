@@ -124,7 +124,7 @@ void compute_waveform(
     for each vertical pixel in the image (x), read frames_per_pixel frames from
     the audio file and find the min and max values.
   */
-  size_t y_median_last;
+  size_t y_median_last = 0;
   for (size_t x = 0; x < image.get_width(); ++x)
   {
     // read frames
