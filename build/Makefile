@@ -1,9 +1,5 @@
 ######
 
-LD_FLAGS=\
-	`libpng-config --ldflags`\
-    -lsndfile\
-
 UNAME := $(shell uname)
 BINARY=../bin/$(UNAME)/wav2png
 SRC=../src
@@ -11,12 +7,20 @@ SRC=../src
 INCLUDES=-I../dependencies/include
 
 ifeq ($(UNAME), Linux)
-LD_PLATFORM_FLAGS=$(LD_FLAGS) -lboost_program_options
+LD_PLATFORM_FLAGS=-lboost_program_options `libpng-config --ldflags` -lsndfile
 CC=g++
 endif
 ifeq ($(UNAME), Darwin)
 CC=clang++
-LD_PLATFORM_FLAGS=$(LD_FLAGS) -lboost_program_options-mt
+LD_PLATFORM_FLAGS=\
+	/usr/local/lib/libboost_program_options-mt.a \
+	/usr/local/lib/libsndfile.a \
+	/usr/local/lib/libpng.a \
+	/usr/local/lib/libogg.a \
+	/usr/local/lib/libvorbis.a \
+	/usr/local/lib/libvorbisenc.a \
+	/usr/local/lib/libFLAC.a \
+	-lz
 INCLUDES+= -I/Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX10.7.sdk/usr/X11/include/
 endif
 
