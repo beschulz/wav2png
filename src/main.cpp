@@ -49,6 +49,7 @@ int main(int argc, char* argv[])
     options.use_db_scale,
     options.db_min,
     options.db_max,
+    options.line_only,
     progress_callback
   );
   cerr << endl;

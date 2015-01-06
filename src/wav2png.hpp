@@ -15,5 +15,6 @@ void compute_waveform(
   bool use_db_scale,
   float db_min,
   float db_max,
+  bool line_only,
   progress_callback_t progress_callback
 );

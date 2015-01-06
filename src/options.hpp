@@ -39,6 +39,8 @@ struct Options
 		    ("db-max", po::value(&db_max)->default_value(0.0f),
     			"maximum value of the signal in dB, that will be visible in the waveform. "
     			"Usefull, if you now, that your signal peaks at a certain level.")
+    		("line-only,l", po::value(&line_only)->zero_tokens()->default_value(false), 
+          		"do a line only (no fill)")
     	;
 
     	po::options_description hidden("Hidden options");
@@ -198,6 +200,8 @@ struct Options
 	bool use_db_scale;
 	float db_min;
 	float db_max;
+
+	bool line_only;
 };
 
 #endif /* OPTIONS_HPP__ */
