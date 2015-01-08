@@ -82,7 +82,7 @@ install_dependencies_Linux:
 	sudo apt-get install -y libsndfile1-dev libpng++-dev libpng12-dev libboost-program-options-dev
 
 install_dependencies_Darwin:
-	#brew update
+	brew update
 	ls  /usr/local/lib/libsndfile.a || brew install libsndfile
 	ls /usr/local/lib/libboost_program_options-mt.a || brew install boost
 	ls ../dependencies/include/png++/png.hpp || (\
