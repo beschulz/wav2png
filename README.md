@@ -1,4 +1,5 @@
-# wav2png
+wav2png
+=======
 
 [![Build Status](https://travis-ci.org/beschulz/wav2png.svg?branch=master)](https://travis-ci.org/beschulz/wav2png)
 
