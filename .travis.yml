@@ -2,9 +2,9 @@ language: cpp
 compiler:
   - gcc
   - clang
-#os:
-#  - linux
-#  - osx
+os:
+  - linux
+  - osx
 script: cd build && make && cd ..
 before_install:
   - cd build && make install_dependencies && cd ..
