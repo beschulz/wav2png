@@ -1,5 +1,7 @@
 # wav2png
 
+[![Build Status](https://travis-ci.org/beschulz/wav2png.svg?branch=master)](https://travis-ci.org/beschulz/wav2png)
+
 Author: Benjamin Schulz
 
 email: beschulz[the a with the circle]betabugs.de  
@@ -112,14 +114,24 @@ If you have suggestions for performance improvements, please drop a line.
 
 # Installation
 
+##
+	if you're using a Linux distributing, that supports apt-get or you're on OSX and have homebrew installed, you
+	might want to try:
+	```
+		cd build
+		make install_dependencies
+	```
+
 ## On Linux (Ubuntu, Debian)
 
 ### install dependencies
-    apt-get install make g++ libsndfile1-dev libpng++-dev libpng12-dev libboost-program-options-dev
+    ```apt-get install make g++ libsndfile1-dev libpng++-dev libpng12-dev libboost-program-options-dev```
 
 ### Build
-	cd build
-    make all
+	```
+		cd build
+		make all
+    ```
 
 ## On Max OS
 
@@ -137,13 +149,15 @@ If you have suggestions for performance improvements, please drop a line.
 * in the shell: cd build && make all
 
 ## On CentOS
-	yum install libsndfile-devel boost-devel libpng-devel gcc-c++
-	cd wav2png/dependencies/include
-	wget http://download.savannah.gnu.org/releases/pngpp/png++-0.2.5.tar.gz
-	tar zxvf png++-0.2.5.tar.gz && rm png++-0.2.5.tar.gz
-	mv png++-0.2.5 png++
-	cd ../../build
-	make # (you might have to remove -Werror in the Makefile)
+	```
+		yum install libsndfile-devel boost-devel libpng-devel gcc-c++
+		cd wav2png/dependencies/include
+		wget http://download.savannah.gnu.org/releases/pngpp/png++-0.2.5.tar.gz
+		tar zxvf png++-0.2.5.tar.gz && rm png++-0.2.5.tar.gz
+		mv png++-0.2.5 png++
+		cd ../../build
+		make # (you might have to remove -Werror in the Makefile)
+	```
 
 # Usage
     > wav2png --help

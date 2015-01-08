@@ -76,3 +76,19 @@ ICON_COLORS=--foreground-color=ffb400ff --background-color=2e4562ff
 	$(BINARY) $(ICON_COLORS) -w16  -h16  -o ../icons/icon_16.png  ../icon.wav
 
 icons: ../icons/icon_512.png
+
+install_dependencies_Linux:
+	sudo apt-get update -qq
+	sudo apt-get install -y libsndfile1-dev libpng++-dev libpng12-dev libboost-program-options-dev
+
+install_dependencies_Darwin:
+	brew update
+	brew install libsndfile
+	brew install boost
+	wget http://download.savannah.gnu.org/releases/pngpp/png++-0.2.5.tar.gz
+	tar -xvf png++-0.2.5.tar.gz
+	rm png++-0.2.5.tar.gz
+	rm -Rf ../dependencies/include/png++
+	mv png++-0.2.5/ ../dependencies/include/png++
+
+install_dependencies: install_dependencies_$(UNAME)
