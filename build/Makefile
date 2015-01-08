@@ -82,13 +82,15 @@ install_dependencies_Linux:
 	sudo apt-get install -y libsndfile1-dev libpng++-dev libpng12-dev libboost-program-options-dev
 
 install_dependencies_Darwin:
-	brew update
-	brew install libsndfile
-	brew install boost
-	wget http://download.savannah.gnu.org/releases/pngpp/png++-0.2.5.tar.gz
-	tar -xvf png++-0.2.5.tar.gz
-	rm png++-0.2.5.tar.gz
-	rm -Rf ../dependencies/include/png++
-	mv png++-0.2.5/ ../dependencies/include/png++
+	#brew update
+	ls  /usr/local/lib/libsndfile.a || brew install libsndfile
+	ls /usr/local/lib/libboost_program_options-mt.a || brew install boost
+	ls ../dependencies/include/png++/png.hpp || (\
+		wget http://download.savannah.gnu.org/releases/pngpp/png++-0.2.5.tar.gz && \
+		tar -xvf png++-0.2.5.tar.gz && \
+		rm png++-0.2.5.tar.gz && \
+		rm -Rf ../dependencies/include/png++ && \
+		mv png++-0.2.5/ ../dependencies/include/png++ \
+	)
 
 install_dependencies: install_dependencies_$(UNAME)
