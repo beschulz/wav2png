@@ -11,7 +11,7 @@ LD_PLATFORM_FLAGS=-lboost_program_options `libpng-config --ldflags` -lsndfile
 CC=g++
 endif
 ifeq ($(UNAME), Darwin)
-CC=clang++
+CC=clang++ -mmacosx-version-min=10.7 -stdlib=libc++
 LD_PLATFORM_FLAGS=\
 	/usr/local/lib/libboost_program_options-mt.a \
 	/usr/local/lib/libsndfile.a \
