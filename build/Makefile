@@ -41,7 +41,8 @@ $(SRC)/version.hpp: Makefile version.txt
 $(BINARY): $(SRC)/*.cpp $(SRC)/*.hpp $(SRC)/version.hpp
 	mkdir -p `dirname $(BINARY)`
 	echo $(INCLUDES)
-	$(CC) -O3 -Wall -Werror -Wno-unused-local-typedefs $(SRC)/*.cpp $(INCLUDES) $(LD_PLATFORM_FLAGS) -o $(BINARY)
+	# -Wno-unused-local-typedefs
+	$(CC) -O3 -Wall -Werror $(SRC)/*.cpp $(INCLUDES) $(LD_PLATFORM_FLAGS) -o $(BINARY)
 
 clean:
 	rm -f $(BINARY)
