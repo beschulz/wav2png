@@ -129,8 +129,10 @@ NSString *kPrivateDragUTI = @"de.betabugs.cocoadraganddrop";
             NSColor* fg = [app_delegate.foreground color];
             NSColor* bg = [app_delegate.background color];
             
-            [[self window] setTitle: @"Converting … please wait!"];
-            
+            dispatch_async(dispatch_get_main_queue(), ^{
+                [[self window] setTitle: @"Converting … please wait!"];
+            });
+                        
             SndfileHandle wav([path UTF8String]);
             
             int width  = std::max(1, [app_delegate.width_box  intValue]);
@@ -163,12 +165,17 @@ NSString *kPrivateDragUTI = @"de.betabugs.cocoadraganddrop";
                              app_delegate.log_scale.state,
                              -40,
                              0,
+                             app_delegate.line_only.state, //line only
                              ^(int p){
-                                 [[self window] setTitle: [NSString stringWithFormat:@"converting: %d%%", p]];
+                                 dispatch_async(dispatch_get_main_queue(), ^{
+                                     [[self window] setTitle: [NSString stringWithFormat:@"converting: %d%%", p]];
+                                 });
                                  
                                  return true;
                              }
             );
+            
+            std::clog << image.get_height() << std::endl;
             
             std::stringstream stream;
             image.write_stream(stream);
@@ -180,7 +187,10 @@ NSString *kPrivateDragUTI = @"de.betabugs.cocoadraganddrop";
             NSSize size;
             size.width = size.height = 1;
             [new_image setSize:size];
-            [self setImage:new_image];
+            
+            dispatch_async(dispatch_get_main_queue(), ^{
+                [self setImage:new_image];
+            });
             
             // write image to disk
             if ( app_delegate.autosave.state  )
@@ -188,7 +198,9 @@ NSString *kPrivateDragUTI = @"de.betabugs.cocoadraganddrop";
                 image.write(std::string([path UTF8String]) + ".png");
             }
             
-            [[self window] setTitle: path!=NULL ? path : @"(no name)"];
+            dispatch_async(dispatch_get_main_queue(), ^{
+                [[self window] setTitle: path!=NULL ? path : @"(no name)"];
+            });
             
             running_jobs--;
         });

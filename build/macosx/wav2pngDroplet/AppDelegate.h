@@ -14,5 +14,6 @@
 
 @property (assign) IBOutlet NSButton *autosave;
 @property (assign) IBOutlet NSButton *log_scale;
+@property (assign) IBOutlet NSButton *line_only;
 
 @end

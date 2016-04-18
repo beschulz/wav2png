@@ -11,6 +11,7 @@
 @synthesize waveform;
 @synthesize autosave;
 @synthesize log_scale;
+@synthesize line_only;
 
 - (void)dealloc
 {
