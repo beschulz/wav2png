@@ -191,17 +191,31 @@ NSString *kPrivateDragUTI = @"de.betabugs.cocoadraganddrop";
             dispatch_async(dispatch_get_main_queue(), ^{
                 [self setImage:new_image];
             });
-            
+
             // write image to disk
             if ( app_delegate.autosave.state  )
             {
-                image.write(std::string([path UTF8String]) + ".png");
+                NSArray *paths = NSSearchPathForDirectoriesInDomains(NSPicturesDirectory, NSUserDomainMask, YES);
+                
+                //this gets the pictures directory in sandbox container not the actual user Pictures directory
+                NSString *userPicturesPath = [[paths objectAtIndex:0] stringByResolvingSymlinksInPath];
+                
+                auto baseName = [[NSURL URLWithString:path] lastPathComponent];
+
+                auto subFolder = [[NSURL fileURLWithPath:userPicturesPath] URLByAppendingPathComponent:@"wav2png"];
+                [[NSFileManager defaultManager] createDirectoryAtURL:subFolder withIntermediateDirectories:YES attributes:nil error:nil];
+
+                auto fullPath = [subFolder URLByAppendingPathComponent:baseName].path;
+
+                image.write(std::string([fullPath UTF8String]) + ".png");
+
+                //image.write(std::string([path UTF8String]) + ".png");
             }
-            
+
             dispatch_async(dispatch_get_main_queue(), ^{
                 [[self window] setTitle: path!=NULL ? path : @"(no name)"];
             });
-            
+
             running_jobs--;
         });
     }

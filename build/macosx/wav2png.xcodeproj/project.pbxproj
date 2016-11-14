@@ -20,26 +20,9 @@
 		9AAF797D158D1CC600FEC688 /* wav2png_objc.mm in Sources */ = {isa = PBXBuildFile; fileRef = 9AAF797C158D1CC600FEC688 /* wav2png_objc.mm */; };
 		9AAF797F158D279C00FEC688 /* Defaults.plist in Resources */ = {isa = PBXBuildFile; fileRef = 9AAF797E158D279C00FEC688 /* Defaults.plist */; };
 		9AAF7982158D3AB800FEC688 /* wav2png in CopyFiles */ = {isa = PBXBuildFile; fileRef = 9AFD2A76158CB47C00625786 /* wav2png */; };
-		9AAF7984158D3BA900FEC688 /* wav2pngDroplet.app in CopyFiles */ = {isa = PBXBuildFile; fileRef = 9A9F70FE158CC3CD00727F23 /* wav2pngDroplet.app */; };
-		9AC4C0E01CC583FE006E3223 /* libpng16.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 9AC4C0DF1CC583FE006E3223 /* libpng16.a */; };
-		9AC4C0E21CC58418006E3223 /* libsndfile.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 9AC4C0E11CC58418006E3223 /* libsndfile.a */; };
-		9AC4C0E31CC58436006E3223 /* libboost_program_options.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 9AC4C0DD1CC58333006E3223 /* libboost_program_options.a */; };
-		9AC4C0E41CC585D3006E3223 /* libboost_program_options.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 9AC4C0DD1CC58333006E3223 /* libboost_program_options.a */; };
-		9AC4C0E61CC58605006E3223 /* libsndfile.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 9AC4C0E11CC58418006E3223 /* libsndfile.a */; };
-		9AC4C0E71CC5910F006E3223 /* libpng16.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 9AC4C0DF1CC583FE006E3223 /* libpng16.a */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXCopyFilesBuildPhase section */
-		9AAF7983158D3BA500FEC688 /* CopyFiles */ = {
-			isa = PBXCopyFilesBuildPhase;
-			buildActionMask = 2147483647;
-			dstPath = "$(SRCROOT)/../../bin/Darwin";
-			dstSubfolderSpec = 0;
-			files = (
-				9AAF7984158D3BA900FEC688 /* wav2pngDroplet.app in CopyFiles */,
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
 		9AFD2A74158CB47C00625786 /* CopyFiles */ = {
 			isa = PBXCopyFilesBuildPhase;
 			buildActionMask = 12;
@@ -56,6 +39,7 @@
 		9A0F3BE6158D451000A04ED0 /* README.md */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; name = README.md; path = ../../README.md; sourceTree = "<group>"; };
 		9A0F3BE8158D45C200A04ED0 /* version.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = version.hpp; sourceTree = "<group>"; };
 		9A0F3BE9158D45FC00A04ED0 /* version.txt */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; name = version.txt; path = ../version.txt; sourceTree = "<group>"; };
+		9A2D34451DDA3C0C00B4E5FD /* wav2pngDroplet.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = wav2pngDroplet.entitlements; sourceTree = "<group>"; };
 		9A9F70FE158CC3CD00727F23 /* wav2pngDroplet.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = wav2pngDroplet.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		9A9F7101158CC3CD00727F23 /* Cocoa.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Cocoa.framework; path = System/Library/Frameworks/Cocoa.framework; sourceTree = SDKROOT; };
 		9A9F7104158CC3CD00727F23 /* AppKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AppKit.framework; path = System/Library/Frameworks/AppKit.framework; sourceTree = SDKROOT; };
@@ -78,9 +62,6 @@
 		9AAF7970158D1A4A00FEC688 /* WaveformDropImageView.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; path = WaveformDropImageView.mm; sourceTree = "<group>"; };
 		9AAF797C158D1CC600FEC688 /* wav2png_objc.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; path = wav2png_objc.mm; sourceTree = "<group>"; };
 		9AAF797E158D279C00FEC688 /* Defaults.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = Defaults.plist; sourceTree = "<group>"; };
-		9AC4C0DD1CC58333006E3223 /* libboost_program_options.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; name = libboost_program_options.a; path = ../../../../../../../usr/local/Cellar/boost/1.60.0_1/lib/libboost_program_options.a; sourceTree = "<group>"; };
-		9AC4C0DF1CC583FE006E3223 /* libpng16.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; name = libpng16.a; path = ../../../../../../../usr/local/Cellar/libpng/1.6.21/lib/libpng16.a; sourceTree = "<group>"; };
-		9AC4C0E11CC58418006E3223 /* libsndfile.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; name = libsndfile.a; path = ../../../../../../../usr/local/Cellar/libsndfile/1.0.26/lib/libsndfile.a; sourceTree = "<group>"; };
 		9AFD2A76158CB47C00625786 /* wav2png */ = {isa = PBXFileReference; explicitFileType = "compiled.mach-o.executable"; includeInIndex = 0; path = wav2png; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
 
@@ -89,9 +70,6 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				9AC4C0E71CC5910F006E3223 /* libpng16.a in Frameworks */,
-				9AC4C0E61CC58605006E3223 /* libsndfile.a in Frameworks */,
-				9AC4C0E41CC585D3006E3223 /* libboost_program_options.a in Frameworks */,
 				9A9F7102158CC3CD00727F23 /* Cocoa.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -100,9 +78,6 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				9AC4C0E31CC58436006E3223 /* libboost_program_options.a in Frameworks */,
-				9AC4C0E21CC58418006E3223 /* libsndfile.a in Frameworks */,
-				9AC4C0E01CC583FE006E3223 /* libpng16.a in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -125,9 +100,6 @@
 		9A9F7100158CC3CD00727F23 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
-				9AC4C0E11CC58418006E3223 /* libsndfile.a */,
-				9AC4C0DF1CC583FE006E3223 /* libpng16.a */,
-				9AC4C0DD1CC58333006E3223 /* libboost_program_options.a */,
 				9A9F7101158CC3CD00727F23 /* Cocoa.framework */,
 				9A9F7103158CC3CD00727F23 /* Other Frameworks */,
 			);
@@ -160,6 +132,7 @@
 		9AAF7963158D1A4A00FEC688 /* wav2pngDroplet */ = {
 			isa = PBXGroup;
 			children = (
+				9A2D34451DDA3C0C00B4E5FD /* wav2pngDroplet.entitlements */,
 				9AAF797E158D279C00FEC688 /* Defaults.plist */,
 				9AAF7964158D1A4A00FEC688 /* AppDelegate.h */,
 				9AAF7965158D1A4A00FEC688 /* AppDelegate.m */,
@@ -195,7 +168,6 @@
 				9A9F70FA158CC3CD00727F23 /* Sources */,
 				9A9F70FB158CC3CD00727F23 /* Frameworks */,
 				9A9F70FC158CC3CD00727F23 /* Resources */,
-				9AAF7983158D3BA500FEC688 /* CopyFiles */,
 			);
 			buildRules = (
 			);
@@ -230,7 +202,22 @@
 		9A367A51158CB39500AA976A /* Project object */ = {
 			isa = PBXProject;
 			attributes = {
-				LastUpgradeCheck = 0430;
+				LastUpgradeCheck = 0810;
+				TargetAttributes = {
+					9A9F70FD158CC3CD00727F23 = {
+						DevelopmentTeam = EJ6B39LVZL;
+						ProvisioningStyle = Automatic;
+						SystemCapabilities = {
+							com.apple.Sandbox = {
+								enabled = 0;
+							};
+						};
+					};
+					9AFD2A75158CB47C00625786 = {
+						DevelopmentTeam = EJ6B39LVZL;
+						ProvisioningStyle = Automatic;
+					};
+				};
 			};
 			buildConfigurationList = 9A367A54158CB39500AA976A /* Build configuration list for PBXProject "wav2png" */;
 			compatibilityVersion = "Xcode 3.2";
@@ -338,11 +325,23 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
 				COPY_PHASE_STRIP = NO;
 				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				ENABLE_TESTABILITY = YES;
 				GCC_C_LANGUAGE_STANDARD = gnu99;
 				GCC_DYNAMIC_NO_PIC = NO;
 				GCC_ENABLE_OBJC_EXCEPTIONS = YES;
+				GCC_NO_COMMON_BLOCKS = YES;
 				GCC_OPTIMIZATION_LEVEL = 0;
 				GCC_PREPROCESSOR_DEFINITIONS = (
 					"DEBUG=1",
@@ -351,7 +350,9 @@
 				GCC_SYMBOLS_PRIVATE_EXTERN = NO;
 				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
 				GCC_WARN_ABOUT_RETURN_TYPE = YES;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
 				GCC_WARN_UNINITIALIZED_AUTOS = YES;
+				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
 				HEADER_SEARCH_PATHS = (
 					"$(SRCROOT)/../../dependencies/include/",
@@ -359,7 +360,8 @@
 				);
 				LIBRARY_SEARCH_PATHS = /usr/X11/lib;
 				LLVM_LTO = YES;
-				MACOSX_DEPLOYMENT_TARGET = 10.7;
+				MACOSX_DEPLOYMENT_TARGET = 10.9;
+				ONLY_ACTIVE_ARCH = YES;
 			};
 			name = Debug;
 		};
@@ -367,14 +369,27 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
 				COPY_PHASE_STRIP = YES;
 				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
 				GCC_C_LANGUAGE_STANDARD = gnu99;
 				GCC_ENABLE_OBJC_EXCEPTIONS = YES;
+				GCC_NO_COMMON_BLOCKS = YES;
 				GCC_OPTIMIZATION_LEVEL = 3;
 				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
 				GCC_WARN_ABOUT_RETURN_TYPE = YES;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
 				GCC_WARN_UNINITIALIZED_AUTOS = YES;
+				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
 				HEADER_SEARCH_PATHS = (
 					"$(SRCROOT)/../../dependencies/include/",
@@ -382,22 +397,30 @@
 				);
 				LIBRARY_SEARCH_PATHS = /usr/X11/lib;
 				LLVM_LTO = YES;
-				MACOSX_DEPLOYMENT_TARGET = 10.7;
+				MACOSX_DEPLOYMENT_TARGET = 10.9;
 			};
 			name = Release;
 		};
 		9A9F711A158CC3CD00727F23 /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				CODE_SIGN_ENTITLEMENTS = wav2pngDroplet/wav2pngDroplet.entitlements;
+				CODE_SIGN_IDENTITY = "Mac Developer";
+				DEVELOPMENT_TEAM = EJ6B39LVZL;
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "wav2pngDroplet/wav2pngDroplet-Prefix.pch";
 				INFOPLIST_FILE = "wav2pngDroplet/wav2pngDroplet-Info.plist";
-				LIBRARY_SEARCH_PATHS = (
-					"$(inherited)",
-					/usr/local/Cellar/boost/1.60.0_1/lib,
-					/usr/local/Cellar/libpng/1.6.21/lib,
-					/usr/local/Cellar/libsndfile/1.0.26/lib,
+				OTHER_LDFLAGS = (
+					/usr/local/lib/libpng.a,
+					/usr/local/lib/libsndfile.a,
+					/usr/local/lib/libboost_program_options.a,
+					/usr/local/lib/libvorbis.a,
+					/usr/local/lib/libogg.a,
+					/usr/local/lib/libFLAC.a,
+					"-lz",
+					/usr/local/lib/libvorbisenc.a,
 				);
+				PRODUCT_BUNDLE_IDENTIFIER = audio.schulz.wav2pngDroplet;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				WRAPPER_EXTENSION = app;
 			};
@@ -406,15 +429,23 @@
 		9A9F711B158CC3CD00727F23 /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				CODE_SIGN_ENTITLEMENTS = wav2pngDroplet/wav2pngDroplet.entitlements;
+				CODE_SIGN_IDENTITY = "Mac Developer";
+				DEVELOPMENT_TEAM = EJ6B39LVZL;
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "wav2pngDroplet/wav2pngDroplet-Prefix.pch";
 				INFOPLIST_FILE = "wav2pngDroplet/wav2pngDroplet-Info.plist";
-				LIBRARY_SEARCH_PATHS = (
-					"$(inherited)",
-					/usr/local/Cellar/boost/1.60.0_1/lib,
-					/usr/local/Cellar/libpng/1.6.21/lib,
-					/usr/local/Cellar/libsndfile/1.0.26/lib,
+				OTHER_LDFLAGS = (
+					/usr/local/lib/libpng.a,
+					/usr/local/lib/libsndfile.a,
+					/usr/local/lib/libboost_program_options.a,
+					/usr/local/lib/libvorbis.a,
+					/usr/local/lib/libogg.a,
+					/usr/local/lib/libFLAC.a,
+					"-lz",
+					/usr/local/lib/libvorbisenc.a,
 				);
+				PRODUCT_BUNDLE_IDENTIFIER = audio.schulz.wav2pngDroplet;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				WRAPPER_EXTENSION = app;
 			};
@@ -423,7 +454,8 @@
 		9AFD2A7F158CB47C00625786 /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
-				CLANG_CXX_LIBRARY = "libc++";
+				CODE_SIGN_IDENTITY = "Mac Developer";
+				DEVELOPMENT_TEAM = EJ6B39LVZL;
 				LIBRARY_SEARCH_PATHS = (
 					/usr/X11/lib,
 					/usr/local/lib,
@@ -438,7 +470,8 @@
 		9AFD2A80158CB47C00625786 /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
-				CLANG_CXX_LIBRARY = "libc++";
+				CODE_SIGN_IDENTITY = "Mac Developer";
+				DEVELOPMENT_TEAM = EJ6B39LVZL;
 				LIBRARY_SEARCH_PATHS = (
 					/usr/X11/lib,
 					/usr/local/lib,
